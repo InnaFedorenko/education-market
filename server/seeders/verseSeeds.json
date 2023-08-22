@@ -1,0 +1,51 @@
+[
+    {
+      "title": "Learn Java Programming",
+      "description": "A comprehensive guide to learning Java programming from scratch.",
+      "author": "Max Kanat-Alexander",
+      "createdAtVal": "2023-08-22T12:00:00Z",
+      "price": 29.99,
+      "versetype": false
+    },
+    {
+      "title": "Mastering React.js",
+      "description": "Unlock the power of React.js and build modern web applications.",
+      "author": "Amiko",
+      "createdAtVal": "2023-08-23T10:30:00Z",
+      "price": 39.99,
+      "versetype": false
+    },
+    {
+      "title": "Creating NFT Art",
+      "description": "Learn to create unique NFT art pieces using blockchain technology.",
+      "author": "Uni",
+      "createdAtVal": "2023-08-24T14:15:00Z",
+      "price": 49.99,
+      "versetype": false
+    },
+    {
+      "title": "Blockchain Fundamentals",
+      "description": "A comprehensive course on the fundamentals of blockchain technology.",
+      "author": "Ity",
+      "createdAtVal": "2023-08-25T09:45:00Z",
+      "price": 59.99,
+      "versetype": false
+    },
+    {
+      "title": "Writing for NFT Projects",
+      "description": "Learn how to create compelling content for NFT art projects.",
+      "author": "Vers",
+      "createdAtVal": "2023-08-26T16:20:00Z",
+      "price": 29.99,
+      "versetype": false
+    },
+    {
+      "title": "Artistic Integration with Blockchain",
+      "description": "Combine artistic skills with blockchain technology for unique digital experiences.",
+      "author": "Uni",
+      "createdAtVal": "2023-08-27T11:10:00Z",
+      "price": 39.99,
+      "versetype": false
+    }
+  ]
+  

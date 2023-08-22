@@ -7,11 +7,11 @@ const orderSchema = new Schema({
         required: true,
         trim: true,
     },
-    authorid: {
-        type: ObjectId,
-        required: true,
-        trim: true,
-    },
+    // authorid: {
+    //     type: String,
+    //     required: true,
+    //     trim: true,
+    // },
     authorname: {
         type: String,
         required: true,
@@ -22,11 +22,11 @@ const orderSchema = new Schema({
         required: true,
         trim: true,
     },
-    clientid: {
-        type: ObjectId,
-        required: true,
-        trim: true,
-    },
+    // clientid: {
+    //     type: String,
+    //     required: true,
+    //     trim: true,
+    // },
     clientname: {
         type: String,
         required: true,
@@ -37,11 +37,11 @@ const orderSchema = new Schema({
         required: true,
         trim: true,
     },
-    verseid: {
-        type: ObjectId,
-        required: true,
-        trim: true,
-    },
+    // verseid: {
+    //     type: String,
+    //     required: true,
+    //     trim: true,
+    // },
     versetitle: {
         type: String,
         required: true,
