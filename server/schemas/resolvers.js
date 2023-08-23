@@ -1,4 +1,4 @@
-const { Profile } = require('../models');
+const { Profile, Verse, Order } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -10,6 +10,21 @@ const resolvers = {
     profile: async (parent, { profileId }) => {
       return Profile.findOne({ _id: profileId });
     },
+
+    verses: async () => {
+      return Verse.find().populate('orders');
+    },
+    verse : async (parent, { verseId }) => {
+      return Verse.findOne({ _id: verseId }).populate('orders');
+    },
+    orders: async () => {
+      return Order.find();
+    },
+    order: async (parent, { orderId }) => {
+      return Order.findOne({ _id: orderId });
+    },
+
+
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {

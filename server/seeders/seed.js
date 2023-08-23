@@ -11,6 +11,8 @@ db.once('open', async () => {
    await cleanDB('Verse', 'verses');
    await cleanDB('Order', 'orders');
    const profiles = await Profile.create(profileSeeds);
+
+   // connect orders to verses
    const verses = await Verse.create(verseSeeds);
    const orders = await Order.create(orderSeeds);
 

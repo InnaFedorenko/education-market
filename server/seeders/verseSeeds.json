@@ -5,7 +5,7 @@
       "author": "Max Kanat-Alexander",
       "createdAtVal": "2023-08-22T12:00:00Z",
       "price": 29.99,
-      "versetype": false
+      "verseType": false
     },
     {
       "title": "Mastering React.js",
@@ -13,7 +13,7 @@
       "author": "Amiko",
       "createdAtVal": "2023-08-23T10:30:00Z",
       "price": 39.99,
-      "versetype": false
+      "verseType": true
     },
     {
       "title": "Creating NFT Art",
@@ -21,7 +21,7 @@
       "author": "Uni",
       "createdAtVal": "2023-08-24T14:15:00Z",
       "price": 49.99,
-      "versetype": false
+      "verseType": false
     },
     {
       "title": "Blockchain Fundamentals",
@@ -29,7 +29,7 @@
       "author": "Ity",
       "createdAtVal": "2023-08-25T09:45:00Z",
       "price": 59.99,
-      "versetype": false
+      "verseType": true
     },
     {
       "title": "Writing for NFT Projects",
@@ -37,7 +37,7 @@
       "author": "Vers",
       "createdAtVal": "2023-08-26T16:20:00Z",
       "price": 29.99,
-      "versetype": false
+      "verseType": false
     },
     {
       "title": "Artistic Integration with Blockchain",
@@ -45,7 +45,7 @@
       "author": "Uni",
       "createdAtVal": "2023-08-27T11:10:00Z",
       "price": 39.99,
-      "versetype": false
+      "verseType": true
     }
   ]
   

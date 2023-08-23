@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 const Order = require('./Order');
+const dateFormat = require('../utils/dateFormat');
 
 const verseSchema = new Schema({
     title: {
@@ -24,13 +25,13 @@ const verseSchema = new Schema({
         trim: true,
         value: Date.now,
         // Use a getter method to format the timestamp on query
-        get: (createdAtVal) => dateFormat(createdAtVal)
+        get: (timestamp) => dateFormat(timestamp)
     },
     price: {
         type: Number,
     },
     // false - teach, true - learn
-    versetype: {
+    verseType: {
         type: Boolean,
         required: true,
         trim: true,

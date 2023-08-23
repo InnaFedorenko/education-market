@@ -1,53 +1,39 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const dateFormat = require('../utils/dateFormat');
 
 const orderSchema = new Schema({  
-    invoicenumber: {
+    invoiceNumber: {
         type: String,
         required: true,
         trim: true,
     },
-    // authorid: {
-    //     type: String,
-    //     required: true,
-    //     trim: true,
-    // },
-    authorname: {
+    authorName: {
         type: String,
         required: true,
         trim: true,
     },
-    authoremail: {
+    authorEmail: {
         type: String,
         required: true,
         trim: true,
     },
-    // clientid: {
-    //     type: String,
-    //     required: true,
-    //     trim: true,
-    // },
-    clientname: {
+    clientName: {
         type: String,
         required: true,
         trim: true,
     },
-    clientemail: {
+    clientEmail: {
         type: String,
         required: true,
         trim: true,
     },
-    // verseid: {
-    //     type: String,
-    //     required: true,
-    //     trim: true,
-    // },
-    versetitle: {
+    verseTitle: {
         type: String,
         required: true,
         trim: true,
     },
-    verseprice: {
+    versePrice: {
         type: Number,
         required: true,
         trim: true,
@@ -58,7 +44,7 @@ const orderSchema = new Schema({
         trim: true,
         value: Date.now,
         // Use a getter method to format the timestamp on query
-        get: (createdAtVal) => dateFormat(createdAtVal)
+        get: (timestamp) => dateFormat(timestamp)
     },
 
 
