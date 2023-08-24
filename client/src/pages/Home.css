@@ -1,0 +1,45 @@
+
+  .overlap {
+    height: 1024px;
+    position: relative;
+  }
+  .hero-img-desktop {
+    height: 682px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 62px;
+    width: 1240px;
+  }
+  .no-intermediaries-no {
+    color: var(--white);
+    font-family: "IBM Plex Mono", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    width: 437px;
+  }
+ .our-university {
+    color: transparent;
+    font-family: "IBM Plex Mono", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: 425px;
+  }
+  .empower-educators {
+    color: transparent;
+    font-family: "Code Pro-Regular", Helvetica;
+    font-size: 74px;
+    font-weight: 400;
+    letter-spacing: -0.37px;
+    line-height: 74px;
+    margin-top: -1px;
+    position: relative;
+    width: 878px;
+  }
