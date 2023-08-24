@@ -1,0 +1,43 @@
+.footers-footer {
+    background-color: var(--black);
+    border-color: var(--black-bg);
+    border-top-style: solid;
+    border-top-width: 1px;
+    height: 60px;
+    left: 0;
+    position: absolute;
+    top: 664px;
+    width: 1440px;
+  }  
+   .footers-footer  .icons-social-media {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/64e6475852986c5d15a03407/releases/64e6494a52986c5d15a03418/img/icons-icon.svg);
+    background-size: 100% 100%;
+    height: 24px;
+    position: relative;
+    width: 24px;
+  }
+  
+   .footers-footer  .icons-social-media-2 {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/64e6475852986c5d15a03407/releases/64e6494a52986c5d15a03418/img/icons-icon-1.svg);
+    background-size: 100% 100%;
+    height: 24px;
+    position: relative;
+    width: 24px;
+  }
+  
+   .footers-footer  .icons-social-media-3 {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/64e6475852986c5d15a03407/releases/64e6494a52986c5d15a03418/img/icons-icon-2.svg);
+    background-size: 100% 100%;
+    height: 24px;
+    position: relative;
+    width: 24px;
+  }
+  
+   .footers-footer  .icons-social-media-4 {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/64e6475852986c5d15a03407/releases/64e6494a52986c5d15a03418/img/icons-icon-3.svg);
+    background-size: 100% 100%;
+    height: 24px;
+    position: relative;
+    width: 24px;
+  }
+  

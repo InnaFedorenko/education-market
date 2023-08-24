@@ -1,0 +1,172 @@
+.header {
+    background-color: var(--black);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: var(--black-bg);
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    height: 60px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1440px;
+  }
+  
+ .logos-logo {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    left: 56px;
+    padding: 0px 10px 0px 0px;
+    position: absolute;
+    top: 12px;
+  }
+  
+  .logo {
+    height: 35px;
+    position: relative;
+    width: 35px;
+  }
+  
+ .ellipse-wrapper {
+    height: 26px;
+    left: 4px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transform: rotate(7deg);
+    width: 8px;
+  }
+  
+ .ellipse {
+    background-color: var(--white);
+    border-radius: 15.08px;
+    height: 30px;
+    left: -22px;
+    position: relative;
+    top: -2px;
+    width: 30px;
+  }
+  
+ .frame-2 {
+    height: 26px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 1px;
+    transform: rotate(180deg);
+    width: 8px;
+  }
+  
+ .ellipse-2 {
+    background-color: var(--blue);
+    border-radius: 15.08px;
+    height: 30px;
+    position: relative;
+    top: -2px;
+    width: 30px;
+  }
+  
+ .overlap-2 {
+    height: 28px;
+    left: 4px;
+    position: absolute;
+    top: 3px;
+    width: 13px;
+  }
+  
+ .frame-3 {
+    height: 26px;
+    left: 2px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transform: rotate(-7deg);
+    width: 8px;
+  }
+  
+ .ellipse-3 {
+    background-color: var(--white);
+    border-radius: 15.08px;
+    height: 30px;
+    position: relative;
+    top: -2px;
+    width: 30px;
+  }
+  
+.frame-4 {
+    height: 26px;
+    left: 6px;
+    overflow: hidden;
+    position: absolute;
+    top: 1px;
+    width: 8px;
+  }
+  
+ .ellipse-4 {
+    background-color: var(--orange);
+    border-radius: 15.08px;
+    height: 30px;
+    position: relative;
+    top: -2px;
+    width: 30px;
+  }
+  
+.uni-vers-ity {
+    color: transparent;
+    font-family: "HelveticaNeueCyr-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+
+  .title-wrapper {
+    align-items: center;
+    border: 1px solid;
+    border-color: #56ccf2cc;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    height: 31px;
+    justify-content: center;
+    left: 1190px;
+    padding: 10px;
+    position: absolute;
+    top: 14px;
+    width: 90px;
+  }
+  .div-wrapper {
+    align-items: center;
+    background-color: #56ccf2cc;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    height: 31px;
+    justify-content: center;
+    left: 1290px;
+    padding: 10px;
+    position: absolute;
+    top: 14px;
+    width: 90px;
+  }
+  .title-2 {
+    color: var(--white);
+    font-family: "IBM Plex Mono", Helvetica;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -0.5px;
+    opacity: 0.6;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+
+
+  
