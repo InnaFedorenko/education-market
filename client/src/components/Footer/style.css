@@ -1,43 +1,21 @@
-.footers-footer {
-    background-color: var(--black);
-    border-color: var(--black-bg);
-    border-top-style: solid;
-    border-top-width: 1px;
-    height: 60px;
-    left: 0;
-    position: absolute;
-    top: 824px;
-    width: 1440px;
-  }  
-   .footers-footer  .icons-social-media {
-    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/64e6475852986c5d15a03407/releases/64e6494a52986c5d15a03418/img/icons-icon.svg);
-    background-size: 100% 100%;
-    height: 24px;
-    position: relative;
-    width: 24px;
+/* Stylesheet.css */
+footer {
+    display: flex;
+    justify-content: flex-end; /* Align text to the right */
+    align-items: center; /* Center text vertically */
+    /* background-color: #000; */
+    /* color: #fff; */
+    padding: 20px;
+    font-size: 12px;
+    /* position: fixed; */
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 1;
+    border-top: #fff 1px solid;
   }
-  
-   .footers-footer  .icons-social-media-2 {
-    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/64e6475852986c5d15a03407/releases/64e6494a52986c5d15a03418/img/icons-icon-1.svg);
-    background-size: 100% 100%;
-    height: 24px;
-    position: relative;
-    width: 24px;
-  }
-  
-   .footers-footer  .icons-social-media-3 {
-    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/64e6475852986c5d15a03407/releases/64e6494a52986c5d15a03418/img/icons-icon-2.svg);
-    background-size: 100% 100%;
-    height: 24px;
-    position: relative;
-    width: 24px;
-  }
-  
-   .footers-footer  .icons-social-media-4 {
-    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/64e6475852986c5d15a03407/releases/64e6494a52986c5d15a03418/img/icons-icon-3.svg);
-    background-size: 100% 100%;
-    height: 24px;
-    position: relative;
-    width: 24px;
+  p {
+    margin: 10px;
+    padding: 0;
   }
   

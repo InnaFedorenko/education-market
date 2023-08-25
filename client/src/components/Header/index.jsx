@@ -1,71 +1,128 @@
-import { Link } from 'react-router-dom';
-import './style.css';
+
+import React, { useState, useEffect } from 'react';
+import { Container, Nav, Navbar} from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import "./style.css";
+import logoImage from '/public/images/logos/logoUniVersIty.svg';
 
 import Auth from '../../utils/auth';
 
+
 const Header = () => {
+  // Set the active menu item based on the current page
+  const [activeMenuItem, setActiveMenuItem] = useState('');
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
+  // handleActiveMenuItem is a function that sets the active menu item
+  const handleActiveMenuItem = (menuItem) => {
+    setActiveMenuItem(menuItem);
+  };
+
+  useEffect(() => {
+    // Get the active menu item from storage on page load
+    const storedActiveItem = localStorage.getItem('activeMenuItem');
+    setActiveMenuItem(storedActiveItem || 'about'); // Default to 'about' if none stored
+  }, []);
+
+  useEffect(() => {
+    // Store the active menu item in local storage whenever it changes
+    localStorage.setItem('activeMenuItem', activeMenuItem);
+  }, [activeMenuItem]);
+
   return (
-    // <header className="bg-info text-dark mb-4 py-3 display-flex align-center">
-    <header className="header">
-      <div className="logos-logo">
-        <div className="logo">
-          <div className="overlap-group">
-            <div className="ellipse-wrapper">
-              <div className="ellipse" />
-            </div>
-            <div className="frame-2">
-              <div className="ellipse-2" />
-            </div>
-          </div>
-          <div className="overlap-2">
-            <div className="frame-3">
-              <div className="ellipse-3" />
-            </div>
-            <div className="frame-4">
-              <div className="ellipse-4" />
-            </div>
-          </div>
-        </div>
-        <p className="uni-vers-ity">
-          <span className="span">Uni</span>
-          <span className="text-wrapper-2">Vers</span>
-          <span className="text-wrapper">Ity</span>
-        </p>
-      </div>
-      <div className="links">
-        <Link className="frame" to="/teach">Teach</Link>
-        <Link className="frame" to="/learn">Learn</Link>
-        {Auth.loggedIn() ? (
-          <>
-            <Link className="frame" to="/me">Profile</Link>
-            {/* <Link className="btn btn-lg btn-primary m-2" to="/me">
-                View My Profile
-              </Link> */}
-            {/* <button className="btn btn-lg btn-light m-2" onClick={logout}>
+    <Navbar expand="lg" >
+      <Container >
+        <Navbar.Brand href="#home">
+          <img
+            src={logoImage}
+            alt="UniVersIty logo"
+            height="50"
+            className="d-inline-block align-top"
+          />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+
+
+            <NavLink
+              exact
+              className={` ${activeMenuItem === 'home' ? 'active-link' : 'nav-link '}`}
+              to="/"
+              onClick={() => handleActiveMenuItem('home')}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              className={` ${activeMenuItem === 'learn' ? 'active-link' : 'nav-link '}`}
+              to="/learn"
+              onClick={() => handleActiveMenuItem('learn')}
+            >
+              Learn
+            </NavLink>
+            <NavLink
+              className={`${activeMenuItem === 'teach' ? 'active-link' : 'nav-link '}`}
+              to="/teach"
+              onClick={() => handleActiveMenuItem('teach')}
+            >
+              Teach
+            </NavLink>
+            {Auth.loggedIn() ? (
+              <Nav>
+                <NavLink
+                  className={`${activeMenuItem === 'profile' ? 'active-link' : 'nav-link '}`}
+                  to="/profile"
+                  onClick={() => handleActiveMenuItem('profile')}
+                >
+                  Profile
+                </NavLink>
+                <NavLink
+                  className={`${activeMenuItem === 'resume' ? 'active-link' : 'nav-link '}`}
+                  to="/resume"
+                  onClick={() => handleActiveMenuItem('resume')}
+                >
+                  Orders
+                </NavLink>
+              </Nav>
+            ) : (false)}
+          </Nav>
+          <Nav>
+            {Auth.loggedIn() ? (
+              <>
+              <span>Hey there, {Auth.getProfile().data.username}!</span>              
+              <NavLink
+                className={`${activeMenuItem === 'logout' ? 'active-link' : 'nav-link '}`}
+                to="/logout"
+                onClick={() => handleActiveMenuItem('logout')}
+              >
                 Logout
-              </button>       */}
-            <button className="btn" onClick={logout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-          <dev links>
-          <Link className="frame" to="/login">
-              Login
-            </Link>
-            <Link className="frame" to="/signup">
-              Signup
-            </Link>
-          </dev>
-          </>
-        )}
-      </div>
-    </header>
+              </NavLink>
+              </>
+            ) : (
+              <Nav >
+                <NavLink
+                  className={`${activeMenuItem === 'login' ? 'active-link' : 'nav-link '}`}
+                  to="/login"
+                  onClick={() => handleActiveMenuItem('login')}
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  className={`${activeMenuItem === 'signUp' ? 'active-link' : 'nav-link '}`}
+                  to="/signUp"
+                  onClick={() => handleActiveMenuItem('signUp')}
+                >
+                  SignUp
+                </NavLink>
+              </Nav>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
-};
+}
+
 export default Header;

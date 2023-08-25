@@ -42,7 +42,6 @@ const typeDefs = gql`
   type Query {
     profiles: [Profile]!
     profile(profileId: ID!): Profile
-    profileByEmail(email: String!): Profile
     verses: [Verse]!
     verse(verseId: ID!): Verse
     orders: [Order]!
@@ -53,8 +52,11 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    signUp(name: String!, email: String!, password: String!): Auth 
+    addProfile(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addSkill(profileId: ID!, skill: String!): Profile
+    removeProfile: Profile
+    removeSkill(skill: String!): Profile
   }
 `;
 module.exports = typeDefs;

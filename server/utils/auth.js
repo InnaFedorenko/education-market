@@ -1,41 +1,46 @@
-const { GraphQLError } = require('graphql');
-const jwt = require('jsonwebtoken');
+const tokenizer = require('jsonwebtoken');
+require('dotenv').config();
 
-const secret = 'mysecretssshhhhhhh';
-const expiration = '2h';
+const secret = process.env.TOKEN_SECRET;
+const expiration = process.env.TOKEN_EXPIRATION;
 
-module.exports = {
-  AuthenticationError: new GraphQLError('Could not authenticate user.', {
-    extensions: {
-      code: 'UNAUTHENTICATED',
-    },
-  }),
-  authMiddleware: function ({ req }) {
-    // allows token to be sent via req.body, req.query, or headers
-    let token = req.body.token || req.query.token || req.headers.authorization;
 
-    // We split the token string into an array and return actual token
-    if (req.headers.authorization) {
+// TOKEN_SECRET_CHECK
+if(process.env.TOKEN_SECRET && process.env.TOKEN_SECRET.length > 3){
+  console.log("VALID TOKEN_SECRET");
+}
+else{
+  console.log("MISSING TOKEN_SECRET");
+}
+
+module.exports = { 
+  contextTokenizer: ({request: req, contextValue}) => {
+    // // console.log(req.body);
+    const header = req.http.headers.get('authorization') || req.http.headers.get('Authorization');
+    let token = req.http.body.token || header;
+
+    if(header) {
       token = token.split(' ').pop().trim();
     }
-
-    if (!token) {
-      return req;
+    if(!token){
+      return false;
     }
 
-    // if token can be verified, add the decoded user's data to the request so it can be accessed in the resolver
-    try {
-      const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
-    } catch {
-      console.log('Invalid token');
+    try{
+      // checks token signature
+      const {data} = tokenizer.verify(token, secret, { maxAge: expiration });
+      if(data){
+        contextValue.user = data;
+      }
+      return data;
+    }catch(err){
+      console.log(err);
+      console.log("contextTokenizer: invalid token");
     }
 
-    // return the request object so it can be passed to the resolver as `context`
-    return req;
+    return false;
   },
-  signToken: function ({ email, name, _id }) {
-    const payload = { email, name, _id };
-    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
-  },
+  signToken: ({name, email, _id}) => {
+    return tokenizer.sign({ data: { name, email, _id } }, secret, {expiresIn: expiration});
+  }
 };
