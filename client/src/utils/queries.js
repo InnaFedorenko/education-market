@@ -13,3 +13,17 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_VERSES = gql`
+query Verses {
+  verses {
+    _id
+    title
+    description
+    author
+    createdAtVal
+    price
+    verseType
+  }
+}
+`;
