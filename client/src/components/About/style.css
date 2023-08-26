@@ -1,0 +1,104 @@
+/* Scaled image styling */
+.scaled-image {
+    max-width: 100%; /* Ensure the image scales within its container */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Remove any residual inline styling */
+    margin: 0 auto; /* Center the image horizontally */
+  }
+  .empower-educators {
+    color: transparent;
+    font-family: "Code Pro-Regular", Helvetica;
+    font-size: 64px;
+    font-weight: 400;
+    letter-spacing: -0.37px;
+    /* line-height: 74px; */
+    margin-top: -1px;
+    position: relative;
+    /* width: 878px; */
+  }
+  .text-wrapper {
+    color: #ffffff;
+  }
+  .span {
+    color: #f2994a;
+  }
+  .text-wrapper-2 {
+    color: #56ccf2;
+  }
+  .our-university {
+    color: transparent;
+    font-family: "IBM Plex Mono", Helvetica;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: 30px;
+    position: relative;
+    /* width: 425px; */
+  }
+
+  .nav_border {
+    border-bottom: rgba(255, 255, 255, 0.87) 1px solid;
+    border-top: rgba(255, 255, 255, 0.87) 1px solid;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .join-button {
+    /* align-items: center; */
+    background-color: rgba(242, 153, 74, 1);
+    border-radius: 5px;
+    /* display: flex; */
+    justify-content: center;
+    padding: 10px;
+    margin-top: 15px; 
+    position: relative;
+    max-width: 400px;
+    min-width: 100px;
+  }
+  
+  /* ... Other CSS rules ... */
+
+/* Style for the Join Us button */
+.join-button {
+    background-color: rgba(242, 153, 74, 1);
+    border-radius: 5px;
+    justify-content: center;
+    padding: 15px; /* Increase padding for better centering */
+    margin: 20px auto; /* Center the button horizontally */
+    max-width: 400px;
+    min-width: 100px;
+    text-align: center; /* Center the button's text */
+}
+
+.join-button:hover {
+    background-color: rgba(242, 153, 74, 0.8);
+    transition: background-color 300ms;
+}
+
+.title {
+    color: rgba(0, 0, 0, 1);
+    background-color: transparent;
+    font-family: "IBM Plex Mono", Helvetica;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* Decrease font size for mobile */
+@media (max-width: 767px) {
+    .empower-educators {
+        font-size: 36px; /* Adjust the font size as needed */
+        text-align: center; /* Center the text on mobile */
+        margin-top: 15px; /* Add margin for better spacing */
+    }
+
+    .our-university {
+        font-size: 20px; /* Adjust the font size for mobile */
+        text-align: center; /* Center the text on mobile */
+        margin-top: 15px; /* Add margin for better spacing */
+    }
+    .join-button {
+        margin: 15px auto; /* Adjust space around the button for mobile */
+        padding: 10px; /* Adjust padding for mobile */
+    }
+}

@@ -1,11 +1,10 @@
+import About from "../components/About";
 
 const Home = () => {
 
   return (
     <main>
-      <div >
-        <h1>Welcome to Education MarketPlace!</h1>
-      </div>
+      <About/>
     </main>
   );
 };

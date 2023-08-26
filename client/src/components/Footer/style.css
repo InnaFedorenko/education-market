@@ -12,7 +12,7 @@ footer {
     width: 100%;
     height: 40px;
     z-index: 1;
-    border-top: #fff 1px solid;
+    /* border-top: rgba(255, 255, 255, 0.87) 1px solid; */
   }
   p {
     margin: 10px;

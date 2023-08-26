@@ -7,7 +7,6 @@
     /* color-scheme: light dark; */
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
-    border: #747bff solid 5px;
   
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -16,7 +15,7 @@
     -webkit-text-size-adjust: 100%;
   }
 * {
-    border: 1px solid #b3b4c3;
+    /* border: 1px solid #b3b4c3; */
     background-color: #242424;
     color: #b3b4c3;
   }
