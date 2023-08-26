@@ -11,9 +11,13 @@ export default function AboutMe() {
                     <Col md={6} className="p-6 text-center">
                         <p className="empower-educators">
                             <span className="text-wrapper">Empower </span>
-                            <span className="span">Educators</span>
+                            <span className="span">
+                             <a href="/teach" className="empower-link orange">Educators</a>
+                            </span>
                             <span className="text-wrapper">, Enable </span>
-                            <span className="text-wrapper-2">Learners</span>
+                            <span className="text-wrapper-2">
+                             <a href="/learn" className="empower-link blue">Learners</a>
+                            </span>
                         </p>
                         <p className="our-university">
                             <span className="text-wrapper">Our </span>

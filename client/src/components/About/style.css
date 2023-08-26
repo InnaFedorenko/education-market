@@ -25,6 +25,18 @@
   .text-wrapper-2 {
     color: #56ccf2;
   }
+  .empower-link {
+    text-decoration: none;
+  }
+    .empower-link:hover {
+        text-decoration: underline;
+    }
+  .orange {
+    color: #f2994a;
+  }
+    .blue {
+        color: #56ccf2;
+    }
   .our-university {
     color: transparent;
     font-family: "IBM Plex Mono", Helvetica;
