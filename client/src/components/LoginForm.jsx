@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { MUTATION_LOGIN } from '../utils/mutations';
 import { useMutation } from "@apollo/client";
+import { Link, useNavigate } from 'react-router-dom';
+
+// const history = useHistory();
+// const navigate = useNavigate();
+
 
 export default function LoginForm (props) {
   const [formState, setFormState ] = useState({
@@ -45,9 +50,14 @@ export default function LoginForm (props) {
 
       console.log(data);
       console.log(data?.login.token)
-      console.log(data?.login.user);
+      console.log(data?.login.profile);
       setShowSuccess(true);
-      setUserData(data?.login.user);
+      setUserData(data?.login.profile);
+
+      // history.push('/learn'); 
+      // To navigate to the '/learn' route
+      // navigate('/learn');
+
     }catch(err){
       console.error(err);
       setShowError(true);
@@ -80,6 +90,10 @@ export default function LoginForm (props) {
       { showSuccess ? (
         <h4 style={{color: "green"}}>
           Good Login! Hello, {userData.name}!
+          <p>
+                Success! You may now head{' '}
+                <Link to="/learn">Start Exploring.</Link>
+              </p>
         </h4>
       ) : (
         <></>

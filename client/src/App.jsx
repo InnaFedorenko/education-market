@@ -54,14 +54,14 @@ function App() {
   const token = localStorage.getItem('user_token') || '';
   return (
     <ApolloProvider client={client}>
-            <LoginProvider token={token}>
-      <Container fluid className="container-flex">
-      <Header />
-      <main className= "main-content">
-        <Outlet />
-      </main>
-      <Footer />
-      </Container>
+      <LoginProvider token={token}>
+        <Container fluid className="container-flex">
+          <Header />
+          <main className="main-content">
+            <Outlet />
+          </main>
+          <Footer />
+        </Container>
       </LoginProvider>
     </ApolloProvider>
   );

@@ -1,39 +1,31 @@
-
 import React, { useState, useEffect } from 'react';
-import { Container, Nav, Navbar} from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import "./style.css";
 import logoImage from '/public/images/logos/logoUniVersIty.svg';
 
-import Auth from '../../utils/auth';
-
+import { useLogin } from '../../utils/LoginContext'; 
 
 const Header = () => {
-  // Set the active menu item based on the current page
   const [activeMenuItem, setActiveMenuItem] = useState('');
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  };
-  // handleActiveMenuItem is a function that sets the active menu item
+  const [state, dispatch] = useLogin(); // Get the login state from context
+
   const handleActiveMenuItem = (menuItem) => {
     setActiveMenuItem(menuItem);
   };
 
   useEffect(() => {
-    // Get the active menu item from storage on page load
     const storedActiveItem = localStorage.getItem('activeMenuItem');
-    setActiveMenuItem(storedActiveItem || 'about'); // Default to 'about' if none stored
+    setActiveMenuItem(storedActiveItem || 'home');
   }, []);
 
   useEffect(() => {
-    // Store the active menu item in local storage whenever it changes
     localStorage.setItem('activeMenuItem', activeMenuItem);
   }, [activeMenuItem]);
 
   return (
-    <Navbar expand="lg" >
-      <Container >
+    <Navbar expand="lg">
+      <Container>
         <Navbar.Brand href="#home">
           <img
             src={logoImage}
@@ -45,8 +37,6 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-
-
             <NavLink
               exact
               className={` ${activeMenuItem === 'home' ? 'active-link' : 'nav-link '}`}
@@ -69,7 +59,7 @@ const Header = () => {
             >
               Teach
             </NavLink>
-            {Auth.loggedIn() ? (
+            {state.loggedIn && ( // Show "Profile" and "Orders" when logged in
               <Nav>
                 <NavLink
                   className={`${activeMenuItem === 'profile' ? 'active-link' : 'nav-link '}`}
@@ -79,29 +69,28 @@ const Header = () => {
                   Profile
                 </NavLink>
                 <NavLink
-                  className={`${activeMenuItem === 'resume' ? 'active-link' : 'nav-link '}`}
-                  to="/resume"
-                  onClick={() => handleActiveMenuItem('resume')}
+                  className={`${activeMenuItem === 'orders' ? 'active-link' : 'nav-link '}`}
+                  to="/orders"
+                  onClick={() => handleActiveMenuItem('orders')}
                 >
                   Orders
                 </NavLink>
               </Nav>
-            ) : (false)}
+            )}
           </Nav>
           <Nav>
-            {Auth.loggedIn() ? (
+            {state.loggedIn ? ( // Show "Logout" when logged in
               <>
-              <span>Hey there, {Auth.getProfile().data.username}!</span>              
-              <NavLink
-                className={`${activeMenuItem === 'logout' ? 'active-link' : 'nav-link '}`}
-                to="/logout"
-                onClick={() => handleActiveMenuItem('logout')}
-              >
-                Logout
-              </NavLink>
+                <NavLink
+                  className={`${activeMenuItem === 'logout' ? 'active-link' : 'nav-link '}`}
+                  to="/logout"
+                  onClick={() => handleActiveMenuItem('logout')}
+                >
+                  Logout
+                </NavLink>
               </>
             ) : (
-              <Nav >
+              <Nav>
                 <NavLink
                   className={`${activeMenuItem === 'login' ? 'active-link' : 'nav-link '}`}
                   to="/login"
