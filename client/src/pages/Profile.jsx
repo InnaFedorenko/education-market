@@ -3,7 +3,7 @@ const Profile = () => {
     return (
       <main>
         <div >
-          <h1>Welcome to Profile Page!</h1>
+          <h1>Welcome to Profile Page - coming soon...!</h1>
         </div>
       </main>
     );

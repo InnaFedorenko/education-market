@@ -1,14 +1,16 @@
 import React from 'react';
 import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 import './style.css';
-import imagePath from "/public/images/verse/verse_example.png";
+import learnImagePath from "/public/images/verse/verse_example.png";
+import teachImagePath from "/public/images/verse/teach.png";
 import avatarPath from "/public/images/verse/avatar.png";
 
 const VerseList = ({ verses, title, type }) => {
   if (!verses.length) {
     return <h3>No Courses Yet</h3>;
   }
-
+ verses = verses.filter(verse => verse.verseType.toString() == type);
+ const imagePath = type == "true" ? teachImagePath  : learnImagePath;
   return (
     <Container className='card-container nav_border'>
       <h3 className="text-left title">{title}</h3>

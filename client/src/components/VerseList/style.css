@@ -1,7 +1,7 @@
   .card {
     border: rgba(242, 153, 74, 1) 1px solid;
     margin-bottom: 0px;
-    /* height: 448px; */
+    height: 448px;
   }
   .card:hover {
     border: rgba(242, 153, 74, 1) 1px solid;
@@ -10,8 +10,6 @@
   }
 
   .nav_border {
-    border-bottom: rgba(255, 255, 255, 0.87) 1px solid;
-    border-top: rgba(255, 255, 255, 0.87) 1px solid;
     padding-top: 15px;
     padding-bottom: 15px;
   }

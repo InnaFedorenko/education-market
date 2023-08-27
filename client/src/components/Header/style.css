@@ -31,3 +31,6 @@
   .navbar-toggler-icon {
     color: rgba(255, 255, 255, 0.87);
   }
+  .navbar {
+    border-bottom: rgba(255, 255, 255, 0.87) 1px solid;
+  }
