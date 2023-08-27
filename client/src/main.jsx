@@ -1,13 +1,30 @@
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+/**
+ * src/main.jsx This file is the entry point for the application.
+ */
 
-import App from './App.jsx';
+// Import required dependencies from React and other libraries
+import React from 'react';
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LoginContext from './utils/LoginContext';
+
+// Import styles
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
+
+import App from './App.jsx'
 import Home from './pages/Home';
+import Learn from './pages/Learn';
+import Teach from './pages/Teach';
 import Profile from './pages/Profile';
-import Signup from './pages/Signup';
+import Orders from './pages/Orders';
+import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+// import SingleThought from './pages/SingleThought';
 import ErrorPage from './pages/ErrorPage';
 
+
+// Create a router configuration using createBrowserRouter
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,23 +34,38 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
-      }, {
+      }, 
+      {
+        path: '/learn',
+        element: <Learn />
+      },
+      {
+        path: '/teach',
+        element: <Teach />
+      },
+      {
+        path: '/profile',
+        element: <Profile />
+      },
+      {
+        path: '/orders',
+        element: <Orders />
+      },
+      {
         path: '/login',
         element: <Login />
       }, {
-        path: '/signup',
-        element: <Signup />
-      }, {
-        path: '/profiles/:profileId',
-        element: <Profile />
-      }, {
-        path: '/me',
-        element: <Profile />
+        path: '/signUp',
+        element: <SignUp />
       }
+      // , {
+      //   path: '/thoughts/:thoughtId',
+      //   element: <SingleThought />
+      // }
     ]
   },
 ]);
-
+// Render the root component using ReactDOM.createRoot
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
 )

@@ -32,7 +32,7 @@ const httpLink = createHttpLink({
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('user_token');
+  const token = localStorage.getItem('id_token');
   // return the headers to the context so httpLink can read them
   return {
     headers: {
@@ -49,20 +49,15 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [count, setCount] = useState(0)
-  // get token, if null, empty string will be the token
-  const token = localStorage.getItem('user_token') || '';
   return (
     <ApolloProvider client={client}>
-      <LoginProvider token={token}>
-        <Container fluid className="container-flex">
-          <Header />
-          <main className="main-content">
-            <Outlet />
-          </main>
-          <Footer />
-        </Container>
-      </LoginProvider>
+      <Container fluid className="container-flex">
+      <Header />
+      <main className= "main-content">
+        <Outlet />
+      </main>
+      <Footer />
+      </Container>
     </ApolloProvider>
   );
 }

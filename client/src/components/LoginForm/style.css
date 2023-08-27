@@ -1,0 +1,75 @@
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Adjust this value to control the vertical centering */
+}
+.login-container {
+  text-align: center;
+  background-color: rgba(22, 22, 22, 1); /* Gray background color */
+  padding: 20px;
+  border-radius: 5px;
+  color: white; /* White text color */
+  width: 450px; /* Set the width of the container */
+}
+
+  .login-title{
+    color:  rgba(255, 255, 255, 1);
+    font-family:  "HelveticaNeueCyr-Medium", Helvetica;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.21px;
+    line-height: 100%;
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+
+  .sign-option {
+    font-family: "Inter", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 16px;
+    margin-top: -1px;
+    position: relative;
+    text-align: center;
+    margin-bottom: -1px;
+    padding: 10px;
+    width: 280px;
+    width: auto;
+  }
+
+
+  .text-wrapper-sing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 20px; */
+    color:  #ffffff;
+  }
+  .link-sign {
+    color: #56ccf2;
+    line-height: 20.8px;
+    text-decoration: none ;
+  }
+  .link-sign:hover {
+    color: #56ccf2;
+    text-decoration: underline;
+  }
+  .login-button {
+    color: black; /* Change text color for Order button */
+    background-color: rgba(242, 153, 74, 1);/* Orange background for Order button */
+    border: none; /* Remove the border for Order button */
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    
+  }
+  .login-button:hover {
+    background-color: rgba(242, 153, 74, 0.8); /* Change background on hover */
+    transition: background-color 300ms; /* Add transition */
+  }
+  
+  
