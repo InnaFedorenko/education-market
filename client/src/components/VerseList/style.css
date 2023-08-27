@@ -1,7 +1,8 @@
   .card {
     border: rgba(242, 153, 74, 1) 1px solid;
     margin-bottom: 0px;
-    height: 448px;
+    height: 450px;
+    min-width: 300px;
   }
   .card:hover {
     border: rgba(242, 153, 74, 1) 1px solid;

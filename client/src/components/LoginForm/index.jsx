@@ -4,12 +4,14 @@ import { useMutation } from "@apollo/client";
 import { Link, useNavigate } from 'react-router-dom';
 import './style.css';
 import { Container } from "react-bootstrap";
+import { useLogin } from '../../utils/LoginContext';
 
 // const history = useHistory();
-// const navigate = useNavigate();
+
 
 
 export default function LoginForm(props) {
+  const [state, dispatch] = useLogin(); // Get the login state from context
   const [formState, setFormState] = useState({
     email: '',
     password: ''
@@ -24,6 +26,7 @@ export default function LoginForm(props) {
   });
 
   const [login, { error }] = useMutation(MUTATION_LOGIN);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -56,8 +59,19 @@ export default function LoginForm(props) {
       setShowSuccess(true);
       setUserData(data?.login.profile);
 
+       localStorage.setItem('id_token', data?.login.token);
+       localStorage.setItem('user_id', data?.login.profile._id);
+      // Save the token to localStorage
+      dispatch({
+        type: 'LOGIN',
+        payload: {
+          token: data?.login.token,
+          user: data?.login.profile
+        }
+      });
+
       // To navigate to the '/learn' route
-      // navigate('/learn');
+      navigate('/learn');
 
     } catch (err) {
       console.error(err);

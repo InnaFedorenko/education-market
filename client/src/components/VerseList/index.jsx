@@ -14,7 +14,7 @@ const VerseList = ({ verses, title, type }) => {
   return (
     <Container className='card-container nav_border'>
       <h3 className="text-left title">{title}</h3>
-      <Row ClassName='card' xs={1} sm={2} md={3} >
+      <Row ClassName='card' xs={1} sm={1} md={2} lg={3} >
         {verses.map((verse) => (
           <Col key={verse._id} className="mb-4">
             <Card className="card">

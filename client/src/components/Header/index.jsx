@@ -10,6 +10,8 @@ const Header = () => {
   const [activeMenuItem, setActiveMenuItem] = useState('');
   const [state, dispatch] = useLogin(); // Get the login state from context
 
+  console.log(state);
+
   const handleActiveMenuItem = (menuItem) => {
     setActiveMenuItem(menuItem);
   };
@@ -27,7 +29,7 @@ const Header = () => {
     
     <Navbar expand="lg " >
       <Container >
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <img
             src={logoImage}
             alt="UniVersIty logo"
