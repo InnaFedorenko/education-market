@@ -61,7 +61,7 @@ const SignUpForm = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="Your email"
+                  placeholder="email@dot.com"
                   name="email"
                   type="email"
                   value={formState.email}
