@@ -11,19 +11,19 @@ const Teach = () => {
   const verses = data?.verses || [];
     return (
       <main>
-       <div className="flex-row justify-center">
-        <h2>Explore Teaching</h2>
-        <div className="col-12 col-md-8 mb-3">
+       <div >
+        {/* <h2>Explore Teaching</h2>
+        <div > */}
           {loading ? (
             <div>Loading...</div>
           ) : (
             <VerseList
               verses={verses}
-              title="Teaching Cards"
+              title="Explore Teaching Topics"
               type="false"
             />
           )}
-        </div>
+        {/* </div> */}
       </div>
       </main>
     );

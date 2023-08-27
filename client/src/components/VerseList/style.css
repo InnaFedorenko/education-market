@@ -1,5 +1,145 @@
-.card {
-    padding: 2em;
-    height: 470px;
+  .card {
+    border: rgba(242, 153, 74, 1) 1px solid;
+    margin-bottom: 0px;
+    /* height: 448px; */
   }
+  .card:hover {
+    border: rgba(242, 153, 74, 1) 1px solid;
+    box-shadow: 0px 0px 10px rgba(242, 153, 74, 1);
+    transition: box-shadow 300ms;
+  }
+
+  .nav_border {
+    border-bottom: rgba(255, 255, 255, 0.87) 1px solid;
+    border-top: rgba(255, 255, 255, 0.87) 1px solid;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+ 
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .verse-title {
+    align-self: stretch;
+    color: rgba(255, 255, 255, 1);
+    font-family: "Inter", Helvetica;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+  }
+ .title{
+    color:  rgba(255, 255, 255, 1);
+    font-family:  "HelveticaNeueCyr-Medium", Helvetica;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.21px;
+    line-height: 100%;
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+  .rows-left-2 {
+    height: 36px;
+    position: relative;
+    width: 211px;
+  }
+  .card-date {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 40px;
+    position: absolute;
+    top: 27px;
+    width: 140px;
+  }
+
+.verse-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  max-width: 40px; /* Adjust the max-width as needed */
+  height: auto;
+}
+
+.card-text-wrapper {
+  color: #56ccf2; /* Text color for the author's name */
+  font-size: 14px; /* Font size for the author's name */
+  font-weight: 500; /* Font weight for the author's name */
+  margin: 2px /* Remove default margin */
+}
+
+/* Styles for the creation date */
+/* You can adjust the styles as needed */
+.creation-date {
+  font-size: 12px; /* Font size for the creation date */
+  color: #888; /* Text color for the creation date */
+  margin: 0; /* Remove default margin */
+}
+
+.card-footer {
+  border-top: 1px solid #ddd; /* Light top border */
+  padding-top: 10px; /* Add space above the content */
+}
+
+.view-button {
+  background-color: transparent; /* Change background on hover */
+  color: white;
+  border: 1px solid rgba(86, 204, 242, 1);;
+  margin-right: 10px; /* Add space between buttons */
+}
+
+.view-button:hover {
+  background-color: transparent; /* Change background on hover */
+  border: 1px solid  rgba(130, 130, 130, 1);
+  transition: background-color 300ms; /* Add transition */
+}
+
+.order-button {
+  color: black; /* Change text color for Order button */
+  background-color: rgba(242, 153, 74, 1);/* Orange background for Order button */
+  border: none; /* Remove the border for Order button */
+}
+.order-button:hover {
+  background-color: rgba(242, 153, 74, 0.8); /* Change background on hover */
+  transition: background-color 300ms; /* Add transition */
+}
+
+.ordered-times-col {
+  flex: 1;
+}
+
+.ordered-times {
+  display: flex;
+  align-items: center;
+  font-size: 14px; /* Adjust font size as needed */
+  color: #888; /* Text color for the "Ordered: X times" text */
+}
+
+/* Style for "Ordered: X times" spans */
+.text-wrapper-4 {
+  color: white; /* Text color for the number */
+  font-weight: bold;
+  margin: 0 4px; /* Add spacing between elements */
+}
+
+.text-wrapper-5 {
+  color: white; /* Text color for "times" */
+  font-weight: normal;
+}
+
+.card-footer{
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
   

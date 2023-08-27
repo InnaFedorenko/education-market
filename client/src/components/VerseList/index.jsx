@@ -1,60 +1,69 @@
-// src/pages/PortfolioPage.jsx
-// purpose: This file is the PortfolioPage component. It is the page that displays the projects that I have worked on.
 import React from 'react';
-import { Card, Button  } from 'react-bootstrap';
+import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 import './style.css';
 import imagePath from "/public/images/verse/verse_example.png";
+import avatarPath from "/public/images/verse/avatar.png";
 
-const VerseList = ({ verses, title, type}) => {
+const VerseList = ({ verses, title, type }) => {
   if (!verses.length) {
     return <h3>No Courses Yet</h3>;
   }
-  // Filter the projects array to only include projects that match the type parameter
-  //verses = verses.filter(verse => verse.verseType.toString()==type);
+
   return (
-    <div className="row my-3" >
-    <h3 className="text-center">{title}</h3>
-      {verses &&
-        verses.map((verse) => (
-          <div key={verse._id} className="col-md-4 mb-4">
+    <Container className='card-container nav_border'>
+      <h3 className="text-left title">{title}</h3>
+      <Row ClassName='card' xs={1} sm={2} md={3} >
+        {verses.map((verse) => (
+          <Col key={verse._id} className="mb-4">
             <Card className="card">
-              <Card.Img id= "projImg" variant="top" src={imagePath}/>
+              <Card.Img id="projImg" variant="top" src={imagePath} />
               <Card.Body>
-                <Card.Text>{verse.title}</Card.Text>
+                <Card.Title className='verse-title'>
+                  <Row className="align-items-center">
+                    <Col xs="auto">
+                      <img src={avatarPath} className="avatar" />
+                    </Col>
+                    <Col>
+                      <p className="card-text-wrapper">{verse.author}</p>
+                      <p className="creation-date">{verse.createdAtVal}</p>
+                    </Col>
+                  </Row>
+                </Card.Title>
+
+                <Card.Text className='verse-title'>{verse.title}</Card.Text>
                 <Card.Text>{verse.description}</Card.Text>
-                <Card.Text>{verse.author}</Card.Text>
-                <Card.Text>{verse.createdAtVal}</Card.Text>
-                <Card.Text>{verse.price}</Card.Text>
-                <Card.Text>Verse Type = {verse.verseType.toString()}</Card.Text>
-                <Button variant="primary">Order</Button>
+                {/* <Card.Text className="card-text-wrapper" >Cost: ${verse.price}</Card.Text> */}
+                {/* <Card.Text>Verse Type = {verse.verseType.toString()}</Card.Text> */}
+                <Row>
+                  <Col className="card-footer">
+                    <Row className="align-items-center justify-content-between" >
+                      <Col xs="auto">
+                      <Card.Text className="card-text-wrapper" >Cost: ${verse.price}</Card.Text>
+                        {/* <Button variant="primary" className="view-button">
+                          View
+                        </Button> */}
+                      </Col>
+                      <Col xs="auto" className="ordered-times-col">
+                        <p className="ordered-times">
+                          <span className="span">Ordered: </span>
+                          <span className="text-wrapper-4">0 </span>
+                          <span className="text-wrapper-5">times</span>
+                        </p>
+                      </Col>
+                      <Col xs="auto">
+                        <Button variant="primary" className="order-button">
+                          Order
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
               </Card.Body>
             </Card>
-          </div>
+          </Col>
         ))}
-
-
-
-      {/* {projects.map((project, index) => (
-        
-        <div key={index} className="col-md-4 mb-4">
-          <Card className="card">
-            <Card.Img id= "projImg" variant="top" src={project.picture}/>
-            <Card.Body>
-              <Card.Link href={project.link} target="_blank">{project.name}</Card.Link>
-              <Card.Link href={project.gitLink} target="_blank">
-              <img   src={gitLogo}
-                alt="GitHub Logo" 
-                className="git-logo me-2"
-                style={{ width: '20px' }} 
-                />
-               </Card.Link> 
-              <Card.Text>Tech Stack: {project.techStack.join(', ')}</Card.Text>
-              <Card.Text>{project.description}</Card.Text>
-            </Card.Body>
-          </Card>
-        </div>
-      ))} */}
-    </div>
+      </Row>
+    </Container>
   );
 }
 
