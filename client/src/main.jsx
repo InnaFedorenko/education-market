@@ -6,7 +6,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LoginContext from './utils/LoginContext';
+// import LoginContext from './utils/LoginContext';
 
 // Import styles
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,6 +22,7 @@ import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 // import SingleThought from './pages/SingleThought';
 import ErrorPage from './pages/ErrorPage';
+import Logout from './pages/Logout';
 
 
 // Create a router configuration using createBrowserRouter
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       }, {
         path: '/signUp',
         element: <SignUp />
+      },
+      {
+        path: '/logout',
+        element: <Logout />
       }
       // , {
       //   path: '/thoughts/:thoughtId',

@@ -8,6 +8,8 @@ import { useLogin } from '../../utils/LoginContext';
 
 const Header = () => {
   const [activeMenuItem, setActiveMenuItem] = useState('');
+
+  //TODO - LoginCheck and LoginCheck Helper - replace next page
   const [state, dispatch] = useLogin(); // Get the login state from context
 
   console.log(state);
