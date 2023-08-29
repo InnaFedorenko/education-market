@@ -1,19 +1,23 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 
-// import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 const SignUpForm = () => {
   const [formState, setFormState] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
   });
-  const [addUser, { error, data }] = useMutation(ADD_USER);
+
+  const [addUser, { error }] = useMutation(ADD_USER);
+  const navigate = useNavigate();
+
+  const [validated] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -33,7 +37,10 @@ const SignUpForm = () => {
         variables: { ...formState },
       });
 
-      Auth.login(data.addUser.token);
+      Auth.setToken(data.signUp.token);
+      // To navigate to the '/learn' route
+      navigate('/learn');
+
     } catch (e) {
       console.error(e);
     }
@@ -42,62 +49,62 @@ const SignUpForm = () => {
   return (
     <main className="main">
       <Container className="login-container">
-          <h4 className="login-title">Sign Up</h4>
-          <div className="card-body">
-            {/* {data ? ( */}
-              {/* <p>
+        <h4 className="login-title">Sign Up</h4>
+        <div className="card-body">
+          {/* {data ? ( */}
+          {/* <p>
                 Success! You may now head{' '}
                 <Link to="/">back to the homepage.</Link>
               </p> */}
-             {/* ) : ( */}
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="username"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="email@dot.com"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="login-button"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-                <div className="sign">
+          {/* ) : ( */}
+          <form onSubmit={handleFormSubmit} noValidate validated={validated}>
+            <input
+              className="form-input"
+              placeholder="Your username"
+              name="name"
+              type="text"
+              value={formState.name}
+              onChange={handleChange}
+            />
+            <input
+              className="form-input"
+              placeholder="email@dot.com"
+              name="email"
+              type="email"
+              value={formState.email}
+              onChange={handleChange}
+            />
+            <input
+              className="form-input"
+              placeholder="******"
+              name="password"
+              type="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+            <button
+              className="login-button"
+              style={{ cursor: 'pointer' }}
+              type="submit"
+            >
+              Submit
+            </button>
+            <div className="sign">
               <p className="sign-option">
                 <span className="text-wrapper-sing">If you already have an account, please</span>
                 <span className="text-wrapper-sing">&nbsp;</span>
                 <Link to="/signUp" className="link-sign">Login</Link>
               </p>
-            </div>                
-              </form>
-             {/* )} */}
+            </div>
+          </form>
+          {/* )} */}
 
-            {/* {error && (
+          {/* {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}
               </div>
             )} */}
-          </div>
+        </div>
 
       </Container>
     </main>
