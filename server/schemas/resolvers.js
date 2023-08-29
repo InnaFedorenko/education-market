@@ -64,6 +64,7 @@ const resolvers = {
     login: async (parent, {email, password}, context) => {
       // if email is not sent, this is an invalid request
       if(email){
+
         const profile = await Profile.findOne({ email });
         
         if (!profile) {
@@ -78,11 +79,12 @@ const resolvers = {
 
         const token = auth.signToken(profile);
 
+
         return { token, profile };
       }
       throw new Error('Error: No user found with this email address');
     },
-    updateProfile: async (parent, { name, email, about, skills, requests, avatarLink }, context) => {
+    updateProfile: async (parent, { name, about, skills, requests, avatarLink }, context) => {
       if(isLoggedIn(context)){
         const id = context.user._id;
         const profile = await Profile.findOneAndUpdate(

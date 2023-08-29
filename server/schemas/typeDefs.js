@@ -32,8 +32,6 @@ const typeDefs = gql`
   type Order {
     _id: ID
     orderNumber: String!
-   # authorName: String!
-   # authorEmail: String!
     clientName: String!
     clientEmail: String!
     verseTitle: String!
@@ -61,7 +59,7 @@ const typeDefs = gql`
   type Mutation {
     signUp(name: String!, email: String!, password: String!): Auth 
     login(email: String!, password: String!): Auth
-    updateProfile(name: String, email: String, about: String, skills: [String], requests: [String], avatarLink: String): Profile
+    updateProfile(name: String, about: String, skills: [String], requests: [String], avatarLink: String): Profile
     addOrder(verseId: ID!, clientName: String!, clientEmail: String!): Order
     deleteOrder(orderId: ID!): Order
     addVerse(title: String!, description: String!, price: Float!, verseType: Boolean!): Verse

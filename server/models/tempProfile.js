@@ -38,36 +38,12 @@ const profileSchema = new Schema({
     ref: 'Verse',
   }
   ],
-  orders: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Order',
-  }
-  ],
 },
   {
     toJSON: {
       virtual: true,
     },
   });
-
-//Virtual to get the order count
-profileSchema.virtual('orderCount').get(function () {
-  return this.orders.length;
-});
-
-//virtual to get the verses   count
-profileSchema.virtual('verseCount').get(function () {
-  return this.verses.length;
-});
-profileSchema.virtual('teachVerseCount').get(function () {
-  // Use the filter method to count verses with verseType equal to false
-  return this.verses.filter(verse => verse.verseType === false).length;
-});
-
-profileSchema.virtual('learnVerseCount').get(function () {
-  // Use the filter method to count verses with verseType equal to true
-  return this.verses.filter(verse => verse.verseType === true).length;
-});
 
 // set up pre-save middleware to create password
 profileSchema.pre('save', async function (next) {
