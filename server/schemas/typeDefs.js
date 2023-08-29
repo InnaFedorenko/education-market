@@ -66,6 +66,7 @@ const typeDefs = gql`
     updateProfileById(profileId: ID!, name: String, about: String, skills: [String], requests: [String], avatarLink: String): Profile
 
     addOrder(verseTitle: String!, versePrice: Float, clientName: String!, clientEmail: String!): Order
+
     deleteOrder(orderId: ID!): Order
 
    # addVerse(title: String!, description: String!, price: Float!, verseType: Boolean!): Verse

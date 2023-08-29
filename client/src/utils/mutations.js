@@ -38,3 +38,30 @@ mutation UpdateProfileById($profileId: ID!, $name: String, $about: String, $skil
   }
 }
 `;
+
+export const ADD_ORDER = gql`
+mutation AddOrder($verseTitle: String!, $clientName: String!, $clientEmail: String!, $versePrice: Float) {
+  addOrder(verseTitle: $verseTitle, clientName: $clientName, clientEmail: $clientEmail, versePrice: $versePrice) {
+    _id
+    orderNumber
+    clientName
+    clientEmail
+    verseTitle
+    versePrice
+    createdAtVal
+  }
+}
+`;
+export const DELETE_ORDER = gql`
+mutation DeleteOrder($orderId: ID!) {
+  deleteOrder(orderId: $orderId) {
+    _id
+    orderNumber
+    clientName
+    clientEmail
+    verseTitle
+    versePrice
+    createdAtVal
+  }
+}
+`;

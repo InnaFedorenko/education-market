@@ -159,29 +159,22 @@ const resolvers = {
 
 
     deleteOrder: async (parent, { orderId }, context) => {
-      // if (isLoggedIn(context)) {
         // Find the order by ID and delete it
-        const deletedOrder = await Order.findByIdAndDelete(orderId);
+        const deletedOrder = await Order.findOneAndDelete(orderId);
         if (!deletedOrder) {
           throw new Error('Error: Order not found');
         }
         // Remove the order reference from the associated verse, client, and author profiles
-        await Verse.findByIdAndUpdate(
-          { _id: deletedOrder.verse },
+        await Verse.findOneAndUpdate(
+          { title: deletedOrder.verseTitle},
           { $pull: { orders: deletedOrder._id } }
         );
-        await Profile.findByIdAndUpdate(
-          { _id: deletedOrder.client },
-          { $pull: { orders: deletedOrder._id } }
-        );
-        await Profile.findByIdAndUpdate(
-          { _id: deletedOrder.author },
+        await Profile.findOneAndUpdate(
+          { email: deletedOrder.clientEmail },
           { $pull: { orders: deletedOrder._id } }
         );
     
         return deletedOrder;
-      // }
-      // throw new Error('Error: Not logged in');
     },   
 
 
