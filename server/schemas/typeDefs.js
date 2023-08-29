@@ -59,11 +59,16 @@ const typeDefs = gql`
   type Mutation {
     signUp(name: String!, email: String!, password: String!): Auth 
     login(email: String!, password: String!): Auth
-    updateProfile(name: String, about: String, skills: [String], requests: [String], avatarLink: String): Profile
-    addOrder(verseId: ID!, clientName: String!, clientEmail: String!): Order
+    
+    #updateProfile(name: String, about: String, skills: [String], requests: [String], avatarLink: String): Profile
+
+    updateProfileById(profileId: ID!, name: String, about: String, skills: [String], requests: [String], avatarLink: String): Profile
+
+    addOrder(verseTitle: String!, VersePrice: Float, clientName: String!, clientEmail: String!): Order
     deleteOrder(orderId: ID!): Order
-    addVerse(title: String!, description: String!, price: Float!, verseType: Boolean!): Verse
-    updateVerse(verseId: ID!, title: String, description: String, price: Float, verseType: Boolean): Verse
+
+   # addVerse(title: String!, description: String!, price: Float!, verseType: Boolean!): Verse
+   # updateVerse(verseId: ID!, title: String, description: String, price: Float, verseType: Boolean): Verse
   }
 `;
 module.exports = typeDefs;

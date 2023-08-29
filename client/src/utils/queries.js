@@ -49,11 +49,11 @@ export const QUERY_VERSES = gql`
 query Verses {
   verses {
     _id
-   # authorProfile {
-   #  name
-   #   email
-   #   avatarLink
-    #}
+    authorProfile {
+     name
+     email
+     avatarLink
+    }
     title
     verseType
     createdAtVal
