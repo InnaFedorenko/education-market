@@ -17,12 +17,8 @@ const resolvers = {
     profiles: async () => {
       return Profile.find().populate('verses').populate('orders');
     },
-
     profile: async (parent, { profileId }) => {
       return Profile.findOne({ _id: profileId }).populate('verses').populate('orders');
-    },
-    profileByEmail: async (parent, { email }) => {
-      return Profile.findOne({ email }).populate('verses').populate('orders');
     },
     verses: async () => {
       return Verse.find().populate('orders').populate('authorProfile');
@@ -36,13 +32,12 @@ const resolvers = {
     order: async (parent, { orderId }) => {
       return Order.findOne({ _id: orderId });
     },
-    ordersByClient: async (parent, { clientId }) => {
-      return Order.find({ client: clientId });
+    orderbyClientName: async (parent, { clientName }) => {
+      return Order.find({ clientName });
     },
-    ordersByVerse: async (parent, { verseId }) => {
-      return Order.find({ verse: verseId });
+    orderbyVerseTitle: async (parent, { verseTitle }) => {
+      return Order.find({ verseTitle });
     },
-
     me: async(parent, {}, context) => {
       console.log(context);
 
@@ -52,7 +47,7 @@ const resolvers = {
       const id = context.user._id;
       // // used the below line to test my query
       //const id = "64e6a061a8bb28589e6b6265";
-      let user = await Profile.findById({ _id: id });
+      let user = await Profile.findById({ _id: id }).populate('verses').populate('orders');
       // if you need to modify output or want to only see plain data, use toObject function
       user = user.toObject();
       console.log(user);

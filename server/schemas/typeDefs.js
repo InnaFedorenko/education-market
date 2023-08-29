@@ -10,7 +10,12 @@ const typeDefs = gql`
     skills: [String]        
     requests: [String]     
     avatarLink: String
-    verses: [Verse]!
+    verses: [Verse]
+    orders: [Order]
+    orderCount: Int
+    verseCount: Int
+    teachVerseCount: Int
+    learnVerseCount: Int
   }
   type Verse {
     _id: ID
@@ -22,6 +27,7 @@ const typeDefs = gql`
     orders: [Order]         
     orderCount: Int
     authorProfile: Profile!
+
   }
   type Order {
     _id: ID
@@ -43,16 +49,13 @@ const typeDefs = gql`
   type Query {
     profiles: [Profile]!
     profile(profileId: ID!): Profile
-    profileByEmail(email: String!): Profile
     verses: [Verse]!
     verse(verseId: ID!): Verse
     orders: [Order]!
     order(orderId: ID!): Order
-    # Add a verse based on the type of verse (teach or learn)
-    # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     me: Profile
-    ordersByClient(clientId: ID!): [Order]!
-    ordersByVerse(verseId: ID!): [Order]!
+    orderbyClientName(clientName: String!): [Order]!
+    orderbyVerseTitle(verseTitle: String!): [Order]!
   }
 
   type Mutation {
