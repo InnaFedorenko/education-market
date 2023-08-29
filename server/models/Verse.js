@@ -14,11 +14,6 @@ const verseSchema = new Schema({
         required: true,
         trim: true,
     },
-    // author: {
-    //     type: String,
-    //     required: true,
-    //     trim: true,
-    // },
     createdAtVal: {
         type: Date,
         required: true,

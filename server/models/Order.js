@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const dateFormat = require('../utils/dateFormat');
 
 const orderSchema = new Schema({  
-    invoiceNumber: {
+    orderNumber: {
         type: String,
         required: true,
         trim: true,

@@ -16,7 +16,6 @@ const typeDefs = gql`
     _id: ID
     title: String!
     description: String!
-    #author: String!
     createdAtVal: String!     
     price: Float
     verseType: Boolean!
@@ -26,7 +25,7 @@ const typeDefs = gql`
   }
   type Order {
     _id: ID
-    invoiceNumber: String!
+    orderNumber: String!
    # authorName: String!
    # authorEmail: String!
     clientName: String!

@@ -113,6 +113,10 @@
   background-color: rgba(242, 153, 74, 0.8); /* Change background on hover */
   transition: background-color 300ms; /* Add transition */
 }
+.order-button:active {
+  background-color:  rgba(130, 130, 130, 1) !important; /* Change background on hover */
+  transition: background-color 300ms; /* Add transition */
+}
 
 .ordered-times-col {
   flex: 1;
