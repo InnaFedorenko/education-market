@@ -33,16 +33,6 @@ const profileSchema = new Schema({
     },
   ],
   avatarLink: String,
-  verses: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Verse',
-  }
-  ],
-  orders: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Order',
-  }
-  ],
 },
   {
     toJSON: {

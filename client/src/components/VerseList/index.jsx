@@ -26,7 +26,7 @@ const VerseList = ({ verses, title, type }) => {
                       <img src={avatarPath} className="avatar" />
                     </Col>
                     <Col>
-                      <p className="card-text-wrapper">{verse.author}</p>
+                      {/* <p className="card-text-wrapper">{verse.author}</p> */}
                       <p className="creation-date">{verse.createdAtVal}</p>
                     </Col>
                   </Row>

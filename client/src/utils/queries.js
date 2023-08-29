@@ -20,7 +20,7 @@ query Verses {
     _id
     title
     description
-    author
+    #author
     createdAtVal
     price
     verseType

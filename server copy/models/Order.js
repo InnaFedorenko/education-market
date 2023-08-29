@@ -8,16 +8,16 @@ const orderSchema = new Schema({
         required: true,
         trim: true,
     },
-    // authorName: {
-    //     type: String,
-    //     required: true,
-    //     trim: true,
-    // },
-    // authorEmail: {
-    //     type: String,
-    //     required: true,
-    //     trim: true,
-    // },
+    authorName: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    authorEmail: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     clientName: {
         type: String,
         required: true,

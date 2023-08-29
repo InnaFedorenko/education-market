@@ -1,0 +1,12 @@
+[
+    {
+      "invoiceNumber": "INV001",
+      "authorName": "Max Kanat-Alexander",
+      "authorEmail": "mkanatalexander@techfriends.dev",
+      "clientName": "Client 1",
+      "clientEmail": "client1@example.com",
+      "verseTitle": "Learn Java Programming",
+      "versePrice": 29.99,
+      "createdAtVal": "2023-08-28T08:30:00Z"
+    }
+ ]

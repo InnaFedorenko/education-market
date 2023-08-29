@@ -93,7 +93,7 @@ const SignUpForm = () => {
               <p className="sign-option">
                 <span className="text-wrapper-sing">If you already have an account, please</span>
                 <span className="text-wrapper-sing">&nbsp;</span>
-                <Link to="/signUp" className="link-sign">Login</Link>
+                <Link to="/login" className="link-sign">Login</Link>
               </p>
             </div>
           </form>

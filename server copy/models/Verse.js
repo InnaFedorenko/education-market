@@ -14,11 +14,11 @@ const verseSchema = new Schema({
         required: true,
         trim: true,
     },
-    // author: {
-    //     type: String,
-    //     required: true,
-    //     trim: true,
-    // },
+    author: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     createdAtVal: {
         type: Date,
         required: true,
@@ -41,10 +41,6 @@ const verseSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Order',
     }],
-    authorProfile:{
-        type: Schema.Types.ObjectId,
-        ref: 'Profile',
-    }
 },
     {
         toJSON: {

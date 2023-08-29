@@ -15,26 +15,32 @@ const isLoggedIn = (context) => {
 const resolvers = {
   Query: {
     profiles: async () => {
-      return Profile.find();
+      return Profile.find().populate('verses').populate('orders');
     },
 
     profile: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId });
+      return Profile.findOne({ _id: profileId }).populate('verses').populate('orders');
     },
     profileByEmail: async (parent, { email }) => {
-      return Profile.findOne({ email });
+      return Profile.findOne({ email }).populate('verses').populate('orders');
     },
     verses: async () => {
-      return Verse.find().populate('orders');
+      return Verse.find().populate('orders').populate('authorProfile');
     },
     verse : async (parent, { verseId }) => {
-      return Verse.findOne({ _id: verseId }).populate('orders');
+      return Verse.findOne({ _id: verseId }).populate('orders').populate('authorProfile');
     },
     orders: async () => {
       return Order.find();
     },
     order: async (parent, { orderId }) => {
       return Order.findOne({ _id: orderId });
+    },
+    ordersByClient: async (parent, { clientId }) => {
+      return Order.find({ client: clientId });
+    },
+    ordersByVerse: async (parent, { verseId }) => {
+      return Order.find({ verse: verseId });
     },
 
     me: async(parent, {}, context) => {
@@ -49,13 +55,11 @@ const resolvers = {
       let user = await Profile.findById({ _id: id });
       // if you need to modify output or want to only see plain data, use toObject function
       user = user.toObject();
-
       console.log(user);
       return user;
     },
     
   },
-
   Mutation: {
     signUp: async (parent,{ name, email, password}, context) => {
       const profile = await Profile.create({ name, email, password });
@@ -83,6 +87,93 @@ const resolvers = {
       }
       throw new Error('Error: No user found with this email address');
     },
+    updateProfile: async (parent, { name, email, about, skills, requests, avatarLink }, context) => {
+      if(isLoggedIn(context)){
+        const id = context.user._id;
+        const profile = await Profile.findOneAndUpdate(
+          { _id: id },
+          { name, email, about, skills, requests, avatarLink },
+          { new: true }
+        );
+        return profile;
+      }
+      throw new Error('Error: Not logged in');
+    },
+    addOrder: async (parent, { invoiceNumber, author, client, verse, versePrice }, context) => {
+      if(isLoggedIn(context)){
+        const order = await Order.create({ invoiceNumber, author, client, verse, versePrice });
+        const verseObj = await Verse.findOneAndUpdate(
+          { _id: verse },
+          { $push: { orders: order._id } },
+          { new: true }
+        );
+        const clientObj = await Profile.findOneAndUpdate(
+          { _id: client },
+          { $push: { orders: order._id } },
+          { new: true }
+        );
+        const authorObj = await Profile.findOneAndUpdate(
+          { _id: author },
+          { $push: { orders: order._id } },
+          { new: true }
+        );
+        return order;
+      }
+      throw new Error('Error: Not logged in');
+    },
+    deleteOrder: async (parent, { orderId }, context) => {
+      if (isLoggedIn(context)) {
+        // Find the order by ID and delete it
+        const deletedOrder = await Order.findByIdAndDelete(orderId);
+    
+        if (!deletedOrder) {
+          throw new Error('Error: Order not found');
+        }
+    
+        // Remove the order reference from the associated verse, client, and author profiles
+        await Verse.findByIdAndUpdate(
+          { _id: deletedOrder.verse },
+          { $pull: { orders: deletedOrder._id } }
+        );
+    
+        await Profile.findByIdAndUpdate(
+          { _id: deletedOrder.client },
+          { $pull: { orders: deletedOrder._id } }
+        );
+    
+        await Profile.findByIdAndUpdate(
+          { _id: deletedOrder.author },
+          { $pull: { orders: deletedOrder._id } }
+        );
+    
+        return deletedOrder;
+      }
+      throw new Error('Error: Not logged in');
+    },    
+    addVerse: async (parent, { title, description, price, verseType }, context) => {
+      if(isLoggedIn(context)){
+        const id = context.user._id;
+        const verse = await Verse.create({ title, description, price, verseType, authorProfile: id });
+        const profile = await Profile.findOneAndUpdate(
+          { _id: id },
+          { $push: { verses: verse._id } },
+          { new: true }
+        );
+        return verse;
+      }
+      throw new Error('Error: Not logged in');
+    },
+    updateVerse: async (parent, { verseId, title, description, price, verseType }, context) => {
+      if(isLoggedIn(context)){
+        const verse = await Verse.findOneAndUpdate(
+          { _id: verseId },
+          { title, description, price, verseType },
+          { new: true }
+        );
+        return verse;
+      }
+      throw new Error('Error: Not logged in');
+    }
   },
 };
 
