@@ -38,15 +38,17 @@ const resolvers = {
     },
 
     me: async(parent, {}, context) => {
-      // if(!isLoggedIn(context)){
-      //   throw new Error("Not logged in");
-      // }
+      console.log(context);
+
+      if(!isLoggedIn(context)){
+        throw new Error("Not logged in");
+      }
       const id = context.user._id;
       // // used the below line to test my query
       //const id = "64e6a061a8bb28589e6b6265";
       let user = await Profile.findById({ _id: id });
       // if you need to modify output or want to only see plain data, use toObject function
-      //user = user.toObject();
+      user = user.toObject();
 
       console.log(user);
       return user;

@@ -1,3 +1,9 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJJdHkiLCJlbWFpbCI6Iml0eUB0ZWNoZnJpZW5kcy5kZXYiLCJfaWQiOiI2NGU2YTA2MWE4YmIyODU4OWU2YjYyNmMifSwiaWF0IjoxNjkzMjU5NzI0LCJleHAiOjE2OTMyNjY5MjR9.RXKI8z5D7XRTsG69Jrand7NPL2tkphOJ2KwCa_S9Lok
+
+
+
+
+
 import { useState } from "react";
 import { MUTATION_LOGIN } from '../../utils/mutations';
 import { useMutation } from "@apollo/client";
@@ -7,12 +13,14 @@ import { Container } from "react-bootstrap";
 import { useLogin } from '../../utils/LoginContext';
 import auth from "../../utils/auth";
 
+const { dispatch } = useLogin();
+
 // const history = useHistory();
 
 
 
 export default function LoginForm(props) {
-  const [state, dispatch] = useLogin(); // Get the login state from context
+  // const [state, dispatch] = useLogin(); // Get the login state from context
   const [formState, setFormState] = useState({
     email: '',
     password: ''
@@ -60,7 +68,8 @@ export default function LoginForm(props) {
       setShowSuccess(true);
       setUserData(data?.login.profile);
 
-      //  localStorage.setItem('user_token', data?.login.token);
+      //  localStorage.setItem('id_token', data?.login.token);
+      //  localStorage.setItem('user_id', data?.login.profile._id);
       auth.setToken(data?.login.token);
       // Save the token to localStorage
       dispatch({
