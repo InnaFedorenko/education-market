@@ -1,4 +1,5 @@
 const { Profile, Verse, Order } = require('../models');
+const {generateUniqueOrderNumber}  = require('../utils/helpers');
 
 // const { signToken, AuthenticationError } = require('../utils/auth');
 const auth = require('../utils/auth');
@@ -21,6 +22,9 @@ const resolvers = {
     profile: async (parent, { profileId }) => {
       return Profile.findOne({ _id: profileId }).populate('verses').populate('orders');
     },
+   profileByEmail: async (parent, { email }) => {
+    return Profile.findOne({ email }).populate('verses').populate('orders');
+   },
     verses: async () => {
       return Verse.find().populate('orders').populate('authorProfile');
     },
@@ -100,23 +104,14 @@ const resolvers = {
     // },
     updateProfileById: async (parent, { profileId, name, about, skills, requests, avatarLink }, context) => {
       try {
-        // Find the profile by profileId
-        //console.log({profileId, name, about, skills, requests, avatarLink});
-      //const tempProfile = await Profile.findById({ _id: profileId }).populate('verses').populate('orders');
-       //console.log (tempProfile);
       let options = {};
       if (skills && skills.length > 0) {
-
         options['$push'] = { skills: { $each: skills } };
-
       }
-
       if (requests && requests.length > 0) {
         options['$push'] = options.hasOwnProperty('$push') ? options['$push'] : {};
         options['$push'].requests = {$each: requests}
-        //{ requests: { $each: requests } };
       }
-
         const profile = await Profile.findOneAndUpdate(
           { _id: profileId},
           {$set: { name, about, avatarLink } , ...options},
@@ -131,21 +126,38 @@ const resolvers = {
         throw new Error(`Error updating profile: ${error.message}`);
       }
     },
-    addOrder: async (parent, { verseTitle, VersePrice, clientName, clientEmail }, context) => {
-        const id = context.user._id;
-        const order = await Order.create({ verseTitle, VersePrice, clientName, clientEmail });
-        const profile = await Profile.findOneAndUpdate(
-          { _id: id },
-          { $push: { orders: order._id } },
-          { new: true }
-          );
-          const verse = await Verse.findOneAndUpdate(
-            { title: verseTitle },
-            { $push: { orders: order._id } },
-            { new: true }
-          );
+
+    addOrder: async (parent, { verseTitle, versePrice, clientName, clientEmail }, context) => {
+      try {
+        // Generate a unique orderNumber (e.g., based on a counter or random value)
+        const orderNumber = await generateUniqueOrderNumber();
+        // Get the current date and time
+        const createdAtVal = new Date();
+        // Create the order with orderNumber and createdAtVal
+        const order = await Order.create({ verseTitle, versePrice, clientName, clientEmail, orderNumber, createdAtVal });
+
+        // Find the client's profile by email
+        const clientProfile = await Profile.findOne({ email: clientEmail });
+
+        // Update the client's profile with the order reference
+        clientProfile.orders.push(order._id);
+        await clientProfile.save();
+
+        // Find the verse by title
+        const verse = await Verse.findOne({ title: verseTitle });
+
+        // Update the verse with the order reference
+        verse.orders.push(order._id);
+        await verse.save();
+
         return order;
+      } catch (error) {
+        throw new Error(`Error adding order: ${error.message}`);
+      }
     },
+
+
+
     deleteOrder: async (parent, { orderId }, context) => {
       // if (isLoggedIn(context)) {
         // Find the order by ID and delete it
@@ -171,7 +183,6 @@ const resolvers = {
       // }
       // throw new Error('Error: Not logged in');
     },   
-
 
 
     // addVerse: async (parent, { title, description, price, verseType }, context) => {

@@ -25,3 +25,16 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const UPDATE_PROFILE = gql`
+mutation UpdateProfileById($profileId: ID!, $name: String, $about: String, $skills: [String], $requests: [String], $avatarLink: String) {
+  updateProfileById(profileId: $profileId, name: $name, about: $about, skills: $skills, requests: $requests, avatarLink: $avatarLink) {
+    _id
+    about
+    avatarLink
+    name
+    skills
+    requests
+  }
+}
+`;
