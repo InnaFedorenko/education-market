@@ -1,3 +1,4 @@
+require('dotenv').config();
 const db = require('../config/connection');
 const { Profile, Verse, Order } = require('../models');
 const profileSeeds = require('./profileSeeds.json');
