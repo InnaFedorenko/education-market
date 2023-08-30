@@ -18,7 +18,7 @@ import Learn from './pages/Learn';
 import Teach from './pages/Teach';
 import Profile from './pages/Profile';
 import Orders from './pages/Orders';
-import SignUp from './pages/SignUp';
+import SignUp from './pages/SignUp2';
 import Login from './pages/Login';
 // import SingleThought from './pages/SingleThought';
 import ErrorPage from './pages/ErrorPage';
