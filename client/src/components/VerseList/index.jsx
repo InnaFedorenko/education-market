@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 import './style.css';
-import learnImagePath from "/public/images/verse/verse_example.png";
-import teachImagePath from "/public/images/verse/teach.png";
-import avatarPath from "/public/images/verse/avatar.png";
+import learnImagePath from "/images/verse/verse_example.png";
+import teachImagePath from "/images/verse/teach.png";
+import avatarPath from "/images/verse/avatar.png";
 
 const VerseList = ({ verses, title, type }) => {
   if (!verses.length) {

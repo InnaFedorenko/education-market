@@ -44,7 +44,7 @@ const resolvers = {
       return Order.find({ verseTitle });
     },
     me: async(parent, {}, context) => {
-      console.log(context);
+     // console.log(context);
 
       if(!isLoggedIn(context)){
         throw new Error("Not logged in");
@@ -52,10 +52,11 @@ const resolvers = {
       const id = context.user._id;
       // // used the below line to test my query
       //const id = "64e6a061a8bb28589e6b6265";
-      let user = await Profile.findById({ _id: id }).populate('verses').populate('orders');
+     // let user = await Profile.findById({ _id: id }).populate('verses').populate('orders');
+     return Profile.findOne({ _id: id }).populate('verses').populate('orders');
       // if you need to modify output or want to only see plain data, use toObject function
       user = user.toObject();
-      console.log(user);
+      //console.log(user);
       return user;
     },
     
@@ -89,19 +90,6 @@ const resolvers = {
       }
       throw new Error('Error: No user found with this email address');
     },
-
-    // updateProfile: async (parent, { name, about, skills, requests, avatarLink }, context) => {
-    //   if(isLoggedIn(context)){
-    //     const id = context.user._id;
-    //     const profile = await Profile.findOneAndUpdate(
-    //       { _id: id },
-    //       { name, email, about, skills, requests, avatarLink },
-    //       { new: true }
-    //     );
-    //     return profile;
-    //   }
-    //   throw new Error('Error: Not logged in');
-    // },
     updateProfileById: async (parent, { profileId, name, about, skills, requests, avatarLink }, context) => {
       try {
       let options = {};

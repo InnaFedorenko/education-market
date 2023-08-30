@@ -2,12 +2,13 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import ProfileAside from "./ProfileAside";
 
+
 // import app component styles
 import './style.css';
 
 const profileMain = ({profile, title}) => {
 
-    console.log(profile);
+   console.log({profile});
   return (
     <main>
       <Container >
@@ -15,9 +16,7 @@ const profileMain = ({profile, title}) => {
               <Col>
               <h3 className="text-left title">{title}</h3>
                 <ProfileAside
-                    username= {profile.name}
-                    email = {profile.email}
-                    profilePicture= {profile.avatarLink}
+              initialProfile={profile}
                 />
                 </Col>
                 {/* <Col>

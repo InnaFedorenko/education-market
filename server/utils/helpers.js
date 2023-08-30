@@ -18,7 +18,7 @@ async function generateUniqueOrderNumber() {
       isUnique = true;
     }
   }
-  console.log({orderNumber});
+  // console.log({orderNumber});
   return orderNumber;
 }
 

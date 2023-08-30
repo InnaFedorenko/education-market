@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import avatarPath from "/public/images/verse/avatar.png";
+import avatarPath from "/images/verse/avatar.png";
 
-const ProfileAside = () => {
+const ProfileAside = ({initialProfile}) => {
  // Initial profile information
-  const initialProfile = {
-    username: 'JohnDoe',
-    email: 'johndoe@example.com',
-    profilePicture: avatarPath,
-  };
+  // const initialProfile = {
+  //   username: 'JohnDoe',
+  //   email: 'johndoe@example.com',
+  //   profilePicture: avatarPath,
+  // };
 
   // State to manage profile information and edit mode
   const [profile, setProfile] = useState(initialProfile);

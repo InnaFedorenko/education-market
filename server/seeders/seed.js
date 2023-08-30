@@ -27,7 +27,7 @@ db.once('open', async () => {
 
     console.log(profiles);
     console.log(verses);
-    //console.log(orders);
+    console.log(orders);
     console.info('Seeding complete! 🌱');
 
     console.log('all done!');
