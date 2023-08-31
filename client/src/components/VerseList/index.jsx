@@ -7,20 +7,57 @@ import avatarPath from "/images/verse/Avatar_def.jpg";
 import { NavLink } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { ADD_ORDER } from '../../utils/mutations';
-import { useLogin } from '../../utils/LoginContext'; 
+import { useLogin } from '../../utils/LoginContext';
+import { QUERY_VERSES, QUERY_ORDERS_BY_CLIENT } from '../../utils/queries';
+// import {useOutletContext} from 'react-router-dom';
 
-const VerseList = ({ verses, title, type }) => {
+const VerseList = ({ verses, title, type,seed, setSeed }) => {
+  // const [setSeed, seed] = useOutletContext();
   if (!verses.length) {
     return <h3>No Courses Yet</h3>;
   }
-    //TODO - LoginCheck and LoginCheck Helper - replace next page
+  //TODO - LoginCheck and LoginCheck Helper - replace next page
   const [state, dispatch] = useLogin(); // Get the login state from context
 
   verses = verses.filter(verse => verse.verseType.toString() == type);
   // console.log(verses);
   // Mutation to add a new order
-  const [addOrder, {error}] = useMutation(ADD_ORDER);
+  const [addOrder, {error}] = useMutation(ADD_ORDER, {refetchQueries: [{query: QUERY_VERSES}, {query:QUERY_ORDERS_BY_CLIENT}]}); // Add the refetchQueries option to the mutation
+  // const [addOrder, { error }] = useMutation(ADD_ORDER,
+  //   {refetchQueries: [{query: QUERY_VERSES}, {query:QUERY_ORDERS_BY_CLIENT}]}
 
+
+
+
+      // update(cache, { data: { addOrder } }) {
+      //   try {
+      //     // find the related query that you want to update, 
+      //     // for adding a game (MUTATION_ADD_GAME)
+      //     // I would want to update the query that gets all games (QUERY_GAMES)
+      //     // this will read data from the games cache and save it a variable called games (the variable name - games - should also match what you have in the QUERY_GAMES)
+      //     const { verses } = cache.readQuery({ query: QUERY_VERSES });
+      //     const versesCopy = [...verses].map(verse => {
+      //       if (verse.title === addOrder.verseTitle) {
+      //         verse.orderCount = verse.orderCount + 1;
+      //       }
+      //       return verse;
+      //     })
+      //     // update the old query by inserting the new data
+      //     cache.writeQuery({
+      //       query: QUERY_VERSES,
+      //       // i know how I want this sorted, I want all new data at the beginning, (addGame)
+      //       // copy all old data to the end of the array (...games)
+      //       // ... is called the spread operator (copy-and-paste operator)
+      //       data: { verses: versesCopy },
+      //       broadcast: true
+      //     });
+  
+      //   } catch (e) {
+      //     console.error(e);
+      //   }
+      //},
+   // }
+   //);
   const handlePlaceOrder = async (verseId) => {
     try {
       const { data } = await addOrder({
@@ -31,10 +68,10 @@ const VerseList = ({ verses, title, type }) => {
           versePrice: verses.find((verse) => verse._id === verseId).price,
         },
       });
-
-   // refresh the page
-    // window.location.reload();
-
+      console.log(data);
+      // refresh the page
+     // window.location.reload();
+      //setSeed(seed+1);
 
     } catch (error) {
       console.error('Error placing order:', error);
@@ -44,7 +81,17 @@ const VerseList = ({ verses, title, type }) => {
   const imagePath = type == "true" ? teachImagePath : learnImagePath;
   return (
     <Container className='card-container nav_border'>
-      <h3 className="text-left title">{title}</h3>
+      <Row className="justify-content-between">
+        <Col xs="auto">
+          <h3 className="text-left title">{title}</h3>
+        </Col>
+        {state.loggedIn && ( // Show "Profile" and "Orders" when logged in
+          <Col xs="auto">
+            <NavLink to={`\create`} className="create-button">Add New</NavLink>
+
+          </Col>
+        )}
+      </Row>
       <Row xs={1} sm={1} md={2} lg={3} >
         {verses.map((verse) => (
           <Col key={verse._id} className="mb-4">
@@ -85,14 +132,14 @@ const VerseList = ({ verses, title, type }) => {
                           View
                         </NavLink>
                         {state.loggedIn && ( // Show "Profile" and "Orders" when logged in
-                        <Button
-                          variant="primary"
-                          className="order-button"
-                          onClick={() => handlePlaceOrder(verse._id)} // Call the handlePlaceOrder function on click
-                        >
-                          Order
-                        </Button>
-                                     )} 
+                          <Button
+                            variant="primary"
+                            className="order-button"
+                            onClick={() => handlePlaceOrder(verse._id)} // Call the handlePlaceOrder function on click
+                          >
+                            Order
+                          </Button>
+                        )}
                       </Col>
                     </Row>
                   </Col>

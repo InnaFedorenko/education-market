@@ -21,9 +21,11 @@ import Orders from './pages/Orders';
 import SignUp from './pages/SignUp2';
 import Login from './pages/Login';
 import ViewVerse from './pages/ViewVerse';
+import CreateVerse from './pages/CreateVerse';
 // import SingleThought from './pages/SingleThought';
 import ErrorPage from './pages/ErrorPage';
 import Logout from './pages/Logout';
+import LearnPage from './pages/LearnPage';
 
 
 // Create a router configuration using createBrowserRouter
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
       }, 
       {
         path: '/learn',
-        element: <Learn />
+        element: <LearnPage />
       },
       {
         path: '/teach',
@@ -63,6 +65,14 @@ const router = createBrowserRouter([
       {
         path: '/logout',
         element: <Logout />
+      },
+      {
+        path: '/learn/create',
+        element: <CreateVerse />
+      },
+      {
+        path: '/teach/create',
+        element: <CreateVerse />
       }
       , {
         path: '/verse/:verseId',

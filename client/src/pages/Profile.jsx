@@ -19,14 +19,14 @@ import ProfileMain from "../components/ProfileMain";
 const Profile = () => {
   const {loading, data} = useQuery(QUERY_USER);
   const profile = data?.me || {};
-  // console.log (data?.me);
+  console.log (data?.me);
 
- // const profile = data?.profile || {initialProfile};
+ //const profile = data?.profile || {initialProfile};
     return (
       <main>
         <div >
-          <h1>Welcome to Profile Page - coming soon...!</h1>
-          {/* {loading ? (
+          {/* <h1>Welcome to Profile Page - coming soon...!</h1> */}
+          {loading ? (
             <div>Loading...</div>
           ) : (
             <div>
@@ -36,7 +36,7 @@ const Profile = () => {
               title= {profile.name}
             />
             </div>
-            )} */}
+            )}
         </div>
       </main>
     );

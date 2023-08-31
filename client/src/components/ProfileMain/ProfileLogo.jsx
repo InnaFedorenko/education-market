@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import avatarPath from "/images/verse/avatar.png";
+import { Container, Row, Col } from 'react-bootstrap';
 
 const ProfileAside = ({initialProfile}) => {
- // Initial profile information
-  // const initialProfile = {
-  //   username: 'JohnDoe',
-  //   email: 'johndoe@example.com',
-  //   profilePicture: avatarPath,
-  // };
 
   // State to manage profile information and edit mode
   const [profile, setProfile] = useState(initialProfile);
@@ -40,10 +35,22 @@ const ProfileAside = ({initialProfile}) => {
 
   return (
     <aside>
-      <div className="profile-picture">
-        <img src={profile.profilePicture} alt="Profile" />
-      </div>
-      {editMode ? (
+      <Container>
+        
+      <Row className="profile-picture">
+        <img src={profile.avatarLink} alt="Profile" />
+        <button onClick={handleEdit}>
+        {editMode ? 'Cancel' : 'Edit Avatar'}
+      </button>
+      </Row>
+      <Row className="profile-name">
+        <p>Name: {profile.name}</p>
+        <p>Email: {profile.email}</p>
+        {/* <button onClick={handleEdit}>
+        {editMode ? 'Cancel' : 'Edit Profile'}
+      </button> */}
+      </Row>
+      {/* {editMode ? (
         <div className="edit-profile">
           <input
             type="text"
@@ -63,12 +70,11 @@ const ProfileAside = ({initialProfile}) => {
       ) : (
         <div className="profile-info">
           <h2>{profile.username}</h2>
-          <p>{profile.email}</p>
+
         </div>
-      )}
-      <button onClick={handleEdit}>
-        {editMode ? 'Cancel' : 'Edit Profile'}
-      </button>
+      )} */}
+
+      </Container>
     </aside>
   );
 };

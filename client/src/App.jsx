@@ -51,7 +51,8 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [seed,setSeed] = useState(0)
+
   // get token, if null, empty string will be the token
   const token = Auth.getToken() || '';
   // want to set the proper state from the beginning if we are initially logged in
@@ -64,7 +65,8 @@ function App() {
         <Container fluid className="container-flex">
           <Header />
           <main className="main-content">
-            <Outlet />
+            <Outlet/>
+    
           </main>
           <Footer />
         </Container>

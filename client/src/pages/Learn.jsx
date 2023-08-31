@@ -2,7 +2,9 @@ import { useQuery } from '@apollo/client';
 import {QUERY_VERSES} from '../utils/queries';
 import VerseList from '../components/VerseList';
 
-const Learn = () => {
+
+const Learn = (props) => {
+  console.log(props);
   const { loading, data } = useQuery(QUERY_VERSES);
   const verses = data?.verses || [];
     return (
@@ -12,6 +14,7 @@ const Learn = () => {
             <div>Loading...</div>
           ) : (
             <VerseList
+              {...props}
               verses={verses}
               title="Explore Learning Topics"
               type="false"

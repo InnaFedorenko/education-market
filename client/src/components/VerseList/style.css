@@ -108,6 +108,26 @@
   transition: background-color 300ms; /* Add transition */
 }
 
+
+.create-button {
+  display: inline-block;
+  background-color: rgba(86, 204, 242, 1);; /* Change background on hover */
+  text-decoration: none;
+  padding: 6px 15px;
+  border-radius: 6px;
+  color:black;
+  border: 1px solid rgba(86, 204, 242, 1);
+  margin-right: 10px; /* Add space between buttons */
+  margin-bottom: 10px;
+}
+
+.create-button:hover {
+  background-color:rgba(130, 130, 130, 1); /* Change background on hover */
+  border: 1px solid  rgba(130, 130, 130, 1);
+  transition: background-color 300ms; /* Add transition */
+}
+
+
 .order-button {
   color: black; /* Change text color for Order button */
   background-color: rgba(242, 153, 74, 1);/* Orange background for Order button */
