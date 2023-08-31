@@ -20,6 +20,7 @@ import Profile from './pages/Profile';
 import Orders from './pages/Orders';
 import SignUp from './pages/SignUp2';
 import Login from './pages/Login';
+import ViewVerse from './pages/ViewVerse';
 // import SingleThought from './pages/SingleThought';
 import ErrorPage from './pages/ErrorPage';
 import Logout from './pages/Logout';
@@ -63,10 +64,10 @@ const router = createBrowserRouter([
         path: '/logout',
         element: <Logout />
       }
-      // , {
-      //   path: '/thoughts/:thoughtId',
-      //   element: <SingleThought />
-      // }
+      , {
+        path: '/verse/:verseId',
+        element: <ViewVerse />
+      }
     ]
   },
 ]);

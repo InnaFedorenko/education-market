@@ -6,10 +6,14 @@ export const QUERY_USER = gql`
       _id
       name
       email
+      avatarLink
       about
       skills
       requests
-      avatarLink
+      verseCount
+      learnVerseCount
+      teachVerseCount
+      orderCount
     }
   }
 `;

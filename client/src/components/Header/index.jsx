@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import "./style.css";
-import logoImage from '/public/images/logos/logoUniVersIty.svg';
+import logoImage from '/images/logos/logoUniVersIty.svg';
 
 import { useLogin } from '../../utils/LoginContext'; 
 
@@ -12,7 +12,7 @@ const Header = () => {
   //TODO - LoginCheck and LoginCheck Helper - replace next page
   const [state, dispatch] = useLogin(); // Get the login state from context
 
-  console.log(state);
+  //console.log(state);
 
   const handleActiveMenuItem = (menuItem) => {
     setActiveMenuItem(menuItem);
@@ -43,7 +43,7 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavLink
-              exact
+              //exact = {true}
               className={` ${activeMenuItem === 'home' ? 'active-link' : 'nav-link '}`}
               to="/"
               onClick={() => handleActiveMenuItem('home')}
@@ -64,7 +64,7 @@ const Header = () => {
             >
               Teach
             </NavLink>
-            {/* {state.loggedIn && ( // Show "Profile" and "Orders" when logged in */}
+            {state.loggedIn && ( // Show "Profile" and "Orders" when logged in
               <Nav>
                 <NavLink
                   className={`${activeMenuItem === 'profile' ? 'active-link' : 'nav-link '}`}
@@ -81,7 +81,7 @@ const Header = () => {
                   Orders
                 </NavLink>
               </Nav>
-            {/* )} */}
+             )} 
           </Nav>
           <Nav>
             {state.loggedIn ? ( // Show "Logout" when logged in

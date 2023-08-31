@@ -6,7 +6,7 @@
     "about": "Brian Kernighan is a computer scientist and co-author of the AWK programming language. He is known for his contributions to Unix and programming languages.",
     "skills": ["AWK", "AMPL", "Unix"],
     "requests": ["Java", "Python"],
-    "avatarLink": "https://picsum.photos/200"
+    "avatarLink": "/images/verse/Brian.png"
   },
   {
     "name": "Max Kanat-Alexander",
@@ -15,7 +15,7 @@
     "about": "Max Kanat-Alexander is a software engineer and the author of 'Code Simplicity'. He has expertise in Java, Perl, and Apache.",
     "skills": ["Java", "Perl", "Apache"],
     "requests": ["Python", "React"],
-    "avatarLink": "https://picsum.photos/200"
+    "avatarLink": "/images/verse/Max.png"
   },
   {
     "name": "Amiko",
@@ -24,16 +24,16 @@
     "about": "Amiko is a junior developer.",
     "skills": [],
     "requests": ["CSS-in-JS", "Java"],
-    "avatarLink": "https://picsum.photos/200"
+    "avatarLink": "/images/verse/Amiko.png"
   },
   {
-    "name": "Kent Beck",
+    "name": "Amy Beck",
     "email": "kbeck@techfriends.dev",
     "password": "password04",
-    "about": "Kent Beck is the creator of Extreme Programming (XP) and a pioneer in software development methodologies. He is known for his work in Test-Driven Development (TDD).",
+    "about": "Amy Beck is the creator of Extreme Programming (XP) and a pioneer in software development methodologies. He is known for his work in Test-Driven Development (TDD).",
     "skills": ["Test-Driven Development", "Extreme Programming", "JUnit"],
     "requests": ["ART"],
-    "avatarLink": "https://picsum.photos/200"
+    "avatarLink": "/images/verse/Amy.png"
   },
   {
     "name": "Edward V. Berard",
@@ -51,7 +51,7 @@
     "about": "Alan Kay is a renowned computer scientist known for his pioneering work in Graphical User Interface (GUI) Design and educational technologies.",
     "skills": ["Graphical User Interface (GUI) Design", "Education"],
     "learn": ["Jazz Guitar"],
-    "avatarLink": "https://picsum.photos/200"
+    "avatarLink": ""
   },
   {
     "name": "Uni",
@@ -60,7 +60,7 @@
     "about": "Uni is an art enthusiast eager to explore blockchain smart contracts. With a background in Art, Uni seeks to integrate artistic skills with blockchain technology to create unique digital experiences.",
     "skills": ["ART"],
     "requests": ["Blockchain Smart Contracts"],
-    "avatarLink": "https://picsum.photos/200"
+    "avatarLink": "/images/verse/Uni.jpg"
   },
   {
     "name": "Vers",
@@ -69,7 +69,7 @@
     "about": "Vers possesses strong writing skills and is embarking on an NFT art project. However, Vers requires guidance in the technical aspects. Vers and Uni can collaborate, with Uni contributing artistry and Vers offering content development.",
     "skills": ["Writing"],
     "requests": ["Technical Aspects of NFT Art Projects"],
-    "avatarLink": "https://picsum.photos/200"
+    "avatarLink": "/images/verse/Vers.jpg"
   },
   {
     "name": "Ity",
@@ -78,6 +78,6 @@
     "about": "Ity is well-versed in blockchain and offers a comprehensive course on the subject. Meanwhile, Ity is working on a Game project and requires content creation expertise. Uni's artistic skills and Vers's writing prowess can greatly contribute to Ity's project.",
     "skills": ["Blockchain"],
     "requests": ["Content Creation", "ART", "Writing"],
-    "avatarLink": "https://picsum.photos/200"
+    "avatarLink": "/images/verse/Ity.jpg"
   }
 ]

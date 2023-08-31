@@ -13,6 +13,7 @@ import auth from "../../utils/auth";
 
 export default function LoginForm(props) {
   const [state, dispatch] = useLogin(); // Get the login state from context
+
   const [formState, setFormState] = useState({
     email: '',
     password: ''
@@ -43,9 +44,9 @@ export default function LoginForm(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
-    setShowError(false);
-    setShowSuccess(false);
+    // console.log(formState);
+    // setShowError(false);
+    // setShowSuccess(false);
 
     try {
       const { data } = await login({
@@ -53,14 +54,14 @@ export default function LoginForm(props) {
           ...formState
         }
       });
-
-      console.log(data);
-      console.log(data?.login.token)
-      console.log(data?.login.profile);
-      setShowSuccess(true);
+      // console.log({data});
+      // console.log(data?.login.token)
+      // console.log(data?.login.profile);
+      //setShowSuccess(true);
       setUserData(data?.login.profile);
-
-      //  localStorage.setItem('user_token', data?.login.token);
+      // console.log(data?.login.token);
+      // localStorage.setItem('user_token', data?.login.token);
+     //localStorage.setItem('user_profile', data?.login.profile);
       auth.setToken(data?.login.token);
       // Save the token to localStorage
       dispatch({

@@ -5,9 +5,14 @@ import { Container } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 
+import { useLogin } from '../../utils/LoginContext';
+
 import Auth from '../../utils/auth';
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
+  const [state, dispatch] = useLogin(); // Get the login state from context
+    //console.log ({state});
+
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -20,7 +25,7 @@ const SignUpForm = () => {
   const [validated] = useState(false);
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+  const { name, value } = event.target;
 
     setFormState({
       ...formState,
@@ -30,14 +35,24 @@ const SignUpForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+   // console.log(formState);
 
     try {
       const { data } = await addUser({
         variables: { ...formState },
       });
-
+      // console.log(data?.signUp.token)  
+      // console.log(data?.signUp.profile);
       Auth.setToken(data.signUp.token);
+
+      dispatch({
+        type: 'LOGIN',
+        payload: {
+          token: data?.signUp.token,
+          user: data?.signUp.profile
+        }
+      });
+
       // To navigate to the '/learn' route
       navigate('/learn');
 

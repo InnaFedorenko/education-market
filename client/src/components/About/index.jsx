@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import './style.css'; // Import the CSS file
-import imagePath from "/public/images/homeBackground/About.png"
+import imagePath from "/images/homeBackground/About.png"
 
 export default function AboutMe() {
     return (
