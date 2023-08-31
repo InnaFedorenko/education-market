@@ -1,7 +1,7 @@
   .card {
     border: rgba(242, 153, 74, 1) 1px solid;
     margin-bottom: 0px;
-    height: 475px;
+    height: 485px;
     min-width: 300px;
   }
   .card:hover {
@@ -92,7 +92,11 @@
 }
 
 .view-button {
+  display: inline-block;
   background-color: transparent; /* Change background on hover */
+  text-decoration: none;
+  padding: 6px 15px;
+  border-radius: 6px;
   color: white;
   border: 1px solid rgba(86, 204, 242, 1);;
   margin-right: 10px; /* Add space between buttons */
