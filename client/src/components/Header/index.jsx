@@ -64,7 +64,7 @@ const Header = () => {
             >
               Teach
             </NavLink>
-            {/* {state.loggedIn && ( // Show "Profile" and "Orders" when logged in */}
+            {state.loggedIn && ( // Show "Profile" and "Orders" when logged in
               <Nav>
                 <NavLink
                   className={`${activeMenuItem === 'profile' ? 'active-link' : 'nav-link '}`}
@@ -81,7 +81,7 @@ const Header = () => {
                   Orders
                 </NavLink>
               </Nav>
-            {/* )} */}
+             )} 
           </Nav>
           <Nav>
             {state.loggedIn ? ( // Show "Logout" when logged in

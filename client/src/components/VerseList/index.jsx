@@ -7,11 +7,15 @@ import avatarPath from "/images/verse/Avatar_def.jpg";
 import { NavLink } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { ADD_ORDER } from '../../utils/mutations';
+import { useLogin } from '../../utils/LoginContext'; 
 
 const VerseList = ({ verses, title, type }) => {
   if (!verses.length) {
     return <h3>No Courses Yet</h3>;
   }
+    //TODO - LoginCheck and LoginCheck Helper - replace next page
+  const [state, dispatch] = useLogin(); // Get the login state from context
+
   verses = verses.filter(verse => verse.verseType.toString() == type);
   // console.log(verses);
   // Mutation to add a new order
@@ -80,6 +84,7 @@ const VerseList = ({ verses, title, type }) => {
                         <NavLink to={`/verse/${verse._id}`} className="view-button">
                           View
                         </NavLink>
+                        {state.loggedIn && ( // Show "Profile" and "Orders" when logged in
                         <Button
                           variant="primary"
                           className="order-button"
@@ -87,6 +92,7 @@ const VerseList = ({ verses, title, type }) => {
                         >
                           Order
                         </Button>
+                                     )} 
                       </Col>
                     </Row>
                   </Col>
