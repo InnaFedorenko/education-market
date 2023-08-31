@@ -1,0 +1,112 @@
+/* Style the table */
+.h3{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+table {
+    width: 100%;
+    border:rgba(242, 153, 74, 1) 2px solid;
+  }
+  .order-card{
+    display: none;
+  }
+  table, thead, tbody, tfoot, td, tr, th {
+    border: 1px solid rgba(242, 153, 74, 1); /* Set border color and thickness */
+    border-collapse: collapse; /* Collapse borders */
+  }
+  thead {
+    text-align: center;
+  }
+  /* Style table headers (th) */
+  th {
+    font-weight: bold; /* Make title text bold */
+    text-align: center; /* Align text to the left */
+    padding: 8px; /* Add padding to headers */
+    color:  #ffffff;/* Set header text color to white */
+  }
+  
+  /* Style table cells (td) */
+  td {
+    padding: 8px; /* Add padding to cells */
+  }
+ 
+
+  .cancel-button {
+    color: black; /* Change text color for Order button */
+    background-color: rgba(242, 153, 74, 1);/* Orange background for Order button */
+    border: none; /* Remove the border for Order button */
+  }
+  .cancel-button:hover {
+    background-color: rgba(242, 153, 74, 0.8); /* Change background on hover */
+    transition: background-color 300ms; /* Add transition */
+  }
+  .cancel-button:active {
+    background-color:  rgba(130, 130, 130, 1) !important; /* Change background on hover */
+    transition: background-color 300ms; /* Add transition */
+    }
+
+/* Style for screens with a width less than 768px (typical mobile screens) */
+@media (max-width: 768px) {
+  /* Hide the table on small screens */
+  table {
+    display: none;
+  }
+
+  /* Style for individual cards */
+  .order-card {
+    border: rgba(242, 153, 74, 1) 1px solid;
+    margin-bottom: 0px;
+    height: auto;
+    min-width: 300px;
+    display:block;
+  }
+
+  .order-card:hover {
+    border: rgba(242, 153, 74, 1) 1px solid;
+    box-shadow: 0px 0px 10px rgba(242, 153, 74, 1);
+    transition: box-shadow 300ms;
+  }
+
+  /* Style for card titles */
+  .order-card h4 {
+    font-weight: bold;
+    color: orange;
+  }
+
+  /* Style for subtitle */
+  .order-card p.subtitle {
+    color:  #56ccf2; 
+    font-weight: bold; /* Make subtitle text bold */
+  }
+
+  /* Style for the line after title and subtitle */
+  .order-card hr {
+    border: 0;
+    border-top: 1px solid orange; /* Set the line color to orange */
+    margin: 8px 0; /* Add space above and below the line */
+  }
+
+  /* Style for regular text */
+  .order-card p.regular-text {
+    font-weight: normal; /* Make regular text normal (not bold) */
+  }
+
+
+  .cancel-button-mobile {
+    color: black; /* Change text color for Order button */
+    background-color: rgba(242, 153, 74, 1);/* Orange background for Order button */
+    border: none; /* Remove the border for Order button */
+  }
+  .cancel-button-mobile:hover {
+    background-color: rgba(242, 153, 74, 0.8); /* Change background on hover */
+    transition: background-color 300ms; /* Add transition */
+  }
+  .cancel-button-mobile:active {
+    background-color:  rgba(130, 130, 130, 1) !important; /* Change background on hover */
+    transition: background-color 300ms; /* Add transition */
+    }
+
+}
+
+
+  
