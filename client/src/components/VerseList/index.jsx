@@ -3,13 +3,14 @@ import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 import './style.css';
 import learnImagePath from "/images/verse/verse_example.png";
 import teachImagePath from "/images/verse/teach.png";
-import avatarPath from "/images/verse/avatar.png";
+import avatarPath from "/images/verse/Avatar_def.jpg";
 
 const VerseList = ({ verses, title, type }) => {
   if (!verses.length) {
     return <h3>No Courses Yet</h3>;
   }
  verses = verses.filter(verse => verse.verseType.toString() == type);
+ console.log(verses);
  const imagePath = type == "true" ? teachImagePath  : learnImagePath;
   return (
     <Container className='card-container nav_border'>
@@ -23,10 +24,10 @@ const VerseList = ({ verses, title, type }) => {
                 <Card.Title className='verse-title'>
                   <Row className="align-items-center">
                     <Col xs="auto">
-                      <img src={avatarPath} className="avatar" />
+                      <img src={verse.authorProfile.avatarLink? verse.authorProfile.avatarLink : avatarPath} className="avatar" />
                     </Col>
                     <Col>
-                      {/* <p className="card-text-wrapper">{verse.author}</p> */}
+                      <p className="card-text-wrapper">{verse.authorProfile.name}</p>
                       <p className="creation-date">{verse.createdAtVal}</p>
                     </Col>
                   </Row>
@@ -48,7 +49,7 @@ const VerseList = ({ verses, title, type }) => {
                       <Col xs="auto" className="ordered-times-col">
                         <p className="ordered-times">
                           <span className="span">Ordered: </span>
-                          <span className="text-wrapper-4">0 </span>
+                          <span className="text-wrapper-4">{verse.orderCount} </span>
                           <span className="text-wrapper-5">times</span>
                         </p>
                       </Col>

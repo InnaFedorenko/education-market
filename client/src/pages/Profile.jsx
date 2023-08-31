@@ -26,7 +26,7 @@ const Profile = () => {
       <main>
         <div >
           <h1>Welcome to Profile Page - coming soon...!</h1>
-          {loading ? (
+          {/* {loading ? (
             <div>Loading...</div>
           ) : (
             <div>
@@ -36,7 +36,7 @@ const Profile = () => {
               title= {profile.name}
             />
             </div>
-            )}
+            )} */}
         </div>
       </main>
     );

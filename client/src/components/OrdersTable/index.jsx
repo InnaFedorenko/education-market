@@ -15,7 +15,7 @@ const OrdersTable = () => {
     const { loading: ordersLoading, data: ordersData, refetch } = useQuery(QUERY_ORDERS_BY_CLIENT, {
         variables: { clientName },
     });
-
+ 
     // Mutation to delete an order
     const [deleteOrder] = useMutation(DELETE_ORDER);
 
@@ -31,6 +31,12 @@ const OrdersTable = () => {
             console.error("Error cancelling order:", error);
         }
     };
+   // Validation is no orders
+   if (!ordersData?.orderbyClientName.length) {
+    return (
+        <h3 className="text-center">No Orders Yet</h3>
+    );
+}
 
     return (
         <main >
