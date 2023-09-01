@@ -27,7 +27,10 @@ export default function LoginForm(props) {
     email: ''
   });
 
-  const [login, { error }] = useMutation(MUTATION_LOGIN);
+  // const [login, { error }] = useMutation(MUTATION_LOGIN);
+  const [login, { error }] = useMutation(MUTATION_LOGIN, {
+    fetchPolicy: "no-cache" 
+  });
   const navigate = useNavigate();
 
   const handleChange = (event) => {
