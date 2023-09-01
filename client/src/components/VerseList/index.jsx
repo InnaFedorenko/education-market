@@ -6,10 +6,20 @@ import teachImagePath from "/images/verse/teach.png";
 import avatarPath from "/images/verse/Avatar_def.jpg";
 import { NavLink } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
+import {QUERY_VERSES, QUERY_USER, QUERY_ORDERS_BY_CLIENT} from '../../utils/queries';
 import { ADD_ORDER } from '../../utils/mutations';
 import { useLogin } from '../../utils/LoginContext'; 
 
-const VerseList = ({ verses, profile, title, type }) => {
+const VerseList = ({ verses1, profile1, title, type }) => {
+
+  const { loading: loading, data: data, refetch: versesRefetch } = useQuery(QUERY_VERSES);
+  let verses = data?.verses || [];
+  const { loading: userLoading, data: userData , refetch: userRefetch} = useQuery(QUERY_USER);
+  const profile = userData?.me || {};
+  const { loading: ordersLoading, data: ordersData, refetch: ordersRefetch } = useQuery(QUERY_ORDERS_BY_CLIENT, {
+    variables: { clientName: profile.name },
+});
+  // Validation is no orders
   if (!verses.length) {
     return <h3>No Courses Yet</h3>;
   }
@@ -32,9 +42,12 @@ const VerseList = ({ verses, profile, title, type }) => {
           versePrice: verses.find((verse) => verse._id === verseId).price,
         },
       });
-
+            // After deleting, refetch the orders to update the list
+            versesRefetch();
+            userRefetch();
+            ordersRefetch();
    // refresh the page
-    window.location.reload();
+   // window.location.reload();
 
 
     } catch (error) {

@@ -1,21 +1,23 @@
 import React from "react";
 import { useQuery, useMutation } from '@apollo/client';
 import { Table, Button, Container, Row, Col, Card } from 'react-bootstrap';
-import { QUERY_USER, QUERY_ORDERS_BY_CLIENT } from '../../utils/queries';
+import { QUERY_USER, QUERY_ORDERS_BY_CLIENT, QUERY_VERSES } from '../../utils/queries';
 import { DELETE_ORDER } from '../../utils/mutations';
 import './style.css';
 
 const OrdersTable = () => {
     // Query for user data
-    const { loading: userLoading, data: userData } = useQuery(QUERY_USER);
+    const { loading: userLoading, data: userData, refetch: userRefetch } = useQuery(QUERY_USER);
     const profile = userData?.me || {};
     const clientName = profile.name;
 
     // Query for orders by client
-    const { loading: ordersLoading, data: ordersData, refetch } = useQuery(QUERY_ORDERS_BY_CLIENT, {
+    const { loading: ordersLoading, data: ordersData, refetch: ordersRefetch } = useQuery(QUERY_ORDERS_BY_CLIENT, {
         variables: { clientName },
     });
- 
+
+    const { loading: loading, data: data, refetch: versesRefetch } = useQuery(QUERY_VERSES);
+
     // Mutation to delete an order
     const [deleteOrder] = useMutation(DELETE_ORDER);
 
@@ -26,20 +28,22 @@ const OrdersTable = () => {
                 variables: { orderId },
             });
             // After deleting, refetch the orders to update the list
-            refetch();
-               // refresh the page
-    window.location.reload();
+             ordersRefetch();
+             userRefetch();
+            versesRefetch();
+            // refresh the page
+            // window.location.reload();
         } catch (error) {
             console.error("Error cancelling order:", error);
         }
     };
-    
-   // Validation is no orders
-   if (!ordersData?.orderbyClientName.length) {
-    return (
-        <h3 className="text-center">No Orders Yet</h3>
-    );
-}
+
+    // Validation is no orders
+    if (!ordersData?.orderbyClientName.length) {
+        return (
+            <h3 className="text-center">No Orders Yet</h3>
+        );
+    }
 
     return (
         <main >
@@ -48,7 +52,7 @@ const OrdersTable = () => {
                 {ordersLoading ? (
                     <p>Loading...</p>
                 ) : (
-                    <Container className="order-table">
+                    <Container className="order-table" >
                         <h3>{profile.name}'s Orders</h3>
                         <Row>
                             <Table responsive bordered hover variant="dark" >
@@ -93,7 +97,7 @@ const OrdersTable = () => {
                                             <Card.Title className='order-title'>
                                                 <Row className="align-items-center">
                                                     <Col>
-                                                    <p className="card-text-wrapper">{order.orderNumber}</p>
+                                                        <p className="card-text-wrapper">{order.orderNumber}</p>
                                                     </Col>
                                                 </Row>
                                             </Card.Title>
@@ -108,11 +112,11 @@ const OrdersTable = () => {
                                                             <Card.Text className="card-text-wrapper" >Cost: ${order.versePrice}</Card.Text>
                                                         </Col>
                                                         <Col xs="auto">
-                                                        <Button className="cancel-button-mobile"
-                                                onClick={() => handleCancelOrder(order._id)}
-                                            >
-                                                Cancel
-                                            </Button>
+                                                            <Button className="cancel-button-mobile"
+                                                                onClick={() => handleCancelOrder(order._id)}
+                                                            >
+                                                                Cancel
+                                                            </Button>
                                                         </Col>
                                                     </Row>
                                                 </Col>

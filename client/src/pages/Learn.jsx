@@ -3,24 +3,24 @@ import {QUERY_VERSES, QUERY_USER} from '../utils/queries';
 import VerseList from '../components/VerseList';
 
 const Learn = () => {
-  const { loading, data } = useQuery(QUERY_VERSES);
-  const verses = data?.verses || [];
-  const { loading: userLoading, data: userData } = useQuery(QUERY_USER);
-  const profile = userData?.me || {};
+  // const { loading: loading, data: data, refetch: refetch } = useQuery(QUERY_VERSES);
+  // const verses = data?.verses || [];
+  // const { loading: userLoading, data: userData , refetch: userRefetch} = useQuery(QUERY_USER);
+  // const profile = userData?.me || {};
   //const clientName = profile.name;
     return (
       <main>
        <div >
-          {loading ? (
+          {/* {loading ? (
             <div>Loading...</div>
-          ) : (
+          ) : ( */}
             <VerseList
-              verses={verses}
-              profile={profile}
+              verses1= "" //{verses}
+              profile1="" //{profile}
               title="Explore Learning Topics"
               type="false"
             />
-          )}
+          {/* )} */}
       </div>
       </main>
     );
