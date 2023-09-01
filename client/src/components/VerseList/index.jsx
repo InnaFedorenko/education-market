@@ -9,7 +9,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { ADD_ORDER } from '../../utils/mutations';
 import { useLogin } from '../../utils/LoginContext'; 
 
-const VerseList = ({ verses, title, type }) => {
+const VerseList = ({ verses, profile, title, type }) => {
   if (!verses.length) {
     return <h3>No Courses Yet</h3>;
   }
@@ -17,8 +17,9 @@ const VerseList = ({ verses, title, type }) => {
   const [state, dispatch] = useLogin(); // Get the login state from context
 
   verses = verses.filter(verse => verse.verseType.toString() == type);
-  // console.log(verses);
+   console.log({profile});
   // Mutation to add a new order
+
   const [addOrder, {error}] = useMutation(ADD_ORDER);
 
   const handlePlaceOrder = async (verseId) => {
@@ -26,14 +27,14 @@ const VerseList = ({ verses, title, type }) => {
       const { data } = await addOrder({
         variables: {
           verseTitle: verses.find((verse) => verse._id === verseId).title,
-          clientName: verses.find((verse) => verse._id === verseId).authorProfile.name,
-          clientEmail: verses.find((verse) => verse._id === verseId).authorProfile.email,
+          clientName: profile.name, //verses.find((verse) => verse._id === verseId).authorProfile.name,
+          clientEmail: profile.email, //verses.find((verse) => verse._id === verseId).authorProfile.email,
           versePrice: verses.find((verse) => verse._id === verseId).price,
         },
       });
 
    // refresh the page
-     window.location.reload();
+    window.location.reload();
 
 
     } catch (error) {

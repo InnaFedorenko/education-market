@@ -27,10 +27,13 @@ const OrdersTable = () => {
             });
             // After deleting, refetch the orders to update the list
             refetch();
+               // refresh the page
+    window.location.reload();
         } catch (error) {
             console.error("Error cancelling order:", error);
         }
     };
+    
    // Validation is no orders
    if (!ordersData?.orderbyClientName.length) {
     return (
