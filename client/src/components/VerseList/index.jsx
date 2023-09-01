@@ -33,7 +33,7 @@ const VerseList = ({ verses, title, type }) => {
       });
 
    // refresh the page
-    // window.location.reload();
+     window.location.reload();
 
 
     } catch (error) {
