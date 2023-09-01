@@ -2,8 +2,10 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import './style.css'; // Import the CSS file
 import imagePath from "/images/homeBackground/About.png"
+import { useLogin } from '../../utils/LoginContext'
 
 export default function AboutMe() {
+    const [state, dispatch] = useLogin(); // Get the login state from context
     return (
         <section >
             <Container className='nav_border'>
@@ -29,11 +31,13 @@ export default function AboutMe() {
                                 platform connects passionate educators directly with curious learners.
                             </span>
                         </p>
+                        {!state.loggedIn && (
                         <p className="join-button">
                             <a href="/signUp" className="title">
                                 Join Us
                             </a>
                         </p>
+                        )}
                     </Col>
                     <Col>
                         <img
